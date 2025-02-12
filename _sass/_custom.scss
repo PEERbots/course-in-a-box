@@ -36,7 +36,7 @@ body {
   text-shadow: 5px 5px 10px $gray-dark;
 
 	a {
-		color: #fcfcfc;
+		color: $gray-darker;
 		border-bottom: 1px dotted;
 		text-decoration: none;
 		transition: all 0.3s linear;
