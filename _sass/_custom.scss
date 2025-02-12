@@ -32,11 +32,11 @@ body {
 	background: 
     url('../#{$jumbotron-mask}') repeat, 
     url('../#{$jumbotron-image}') center/$jumbotron-image-size $jumbotron-color;
-	color: $gray-darker;
+	color: $black;
   text-shadow: 5px 5px 10px $gray-dark;
 
 	a {
-		color: $gray-darker;
+		color: $black;
 		border-bottom: 1px dotted;
 		text-decoration: none;
 		transition: all 0.3s linear;
