@@ -67,14 +67,27 @@ $p2pu-light-green:      transparentize($p2pu-green, 0.85);
 $p2pu-light-yellow:     transparentize($p2pu-yellow, 0.85);
 $p2pu-light-orange:     transparentize($p2pu-orange, 0.85);
 
-$primary:       $gray-darker;
-$secondary:     $gray-lighter;
-$success:       $p2pu-green;
-$info:          $p2pu-blue;
-$warning:       $p2pu-yellow;
-$danger:        $p2pu-orange;
-$light:         $gray-snow;
-$dark:          $gray-darker;
+$peerbots-teal: #5fc7cc;
+$peerbots-blue: #516eb5;
+$peerbots-red: #e96c8a;
+$peerbots-yellow: #c3cb2f;
+$peerbots-grey: #d8e7eb;
+$peerbots-light-teal: transparentize($peerbots-teal, 0.85);
+$peerbots-light-blue: transparentize($peerbots-blue, 0.85);
+$peerbots-light-red: transparentize($peerbots-red, 0.85);
+$peerbots-light-yellow: transparentize($peerbots-yellow, 0.85);
+$peerbots-light-grey: transparentize($peerbots-grey, 0.85);
+$peerbots-dark-grey: darken($peerbots-grey, 40%);
+
+
+$primary:       $peerbots-blue;
+$secondary:     $peerbots-teal;
+$success:       $peerbots-teal;
+$info:          $peerbots-grey;
+$warning:       $peerbots-yellow;
+$danger:        $peerbots-red;
+$light:         $peerbots-grey;
+$dark:          $peerbots-dark-grey;
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -189,7 +202,7 @@ $body-color:                $gray-darker;;
 // Style anchor elements.
 
 
-$link-color:                $p2pu-blue;
+$link-color:                $primary;
 $link-decoration:           none !default;
 $link-hover-color:          darken($link-color, 15%);
 $link-hover-decoration:     underline !default;
