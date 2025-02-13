@@ -6,9 +6,13 @@ title: Basic Control
 
 With the Peerbots controller, the primary focus is on controlling a robot's verbal expressions. The Peerbots controller also includes emotive expression, and colors to make the verbal expressions more expressive.
 
+In the simplest view of the Peerbots Controller, you'll see many buttons. Each button will initiate something as part of the controller. The buttons view will look something like this:
+
+![An example of the buttons view showing many buttons on the page.](../../../img/buttons_view.png)
+
 ## Button Types
 
-In the simplest view of the Peerbots Controller, you'll see many buttons. Each button will initiate something as part of the controller. There are currently two types of buttons:
+There are currently two types of buttons:
 
 - Message buttons - Send a message to all connected robots
 - Log buttons - Track an event
