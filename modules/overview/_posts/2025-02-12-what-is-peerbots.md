@@ -19,3 +19,5 @@ The Peerbots Platform tools are as follows:
 
 Each of these tools is designed for a different set of expertise and for use in different contexts.
 Some of these tools will make sense for you to incorporate into your use of Peerbots but don't feel pressured to use everything! Start small and incorporate more tools as you see fit.
+
+{% include truefalse.html id="tf-tools" statement="I have to use all the Peerbots tools to get any value." true_response="No! You can use a single tool or all of them and anything in between!" false_response="Correct! You can use a single tool or all of them and anything in between!" %}

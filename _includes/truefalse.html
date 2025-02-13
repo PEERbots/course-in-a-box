@@ -1,0 +1,24 @@
+<div class="tf-section">
+    <p class="bold">True or False?</p>
+    <div>
+        <span>{{ include.statement }}</span>
+        <div id="{{ include.id }}-tf-buttons">
+            <button id="{{ include.id }}-true-button" >True</button>
+            <button id="{{ include.id }}-false-button">False</button>
+        </div>
+    </div>
+    <div class="mt-3">
+        <span class="d-none" id="{{ include.id }}-true-response">{{ include.true_response }}</span>
+        <span class="d-none" id="{{ include.id }}-false-response">{{ include.false_response }}</span>
+    </div>
+</div>
+<script>
+document.getElementById("{{ include.id | json }}-true-button").addEventListener("click", (e)=>{
+    document.getElementById("{{ include.id |json }}-tf-buttons").classList.add("d-none")
+    document.getElementById("{{ include.id |json }}-true-response").classList.remove("d-none")
+})
+document.getElementById("{{ include.id | json }}-false-button").addEventListener("click", (e)=>{
+    document.getElementById("{{ include.id |json }}-tf-buttons").classList.add("d-none")
+    document.getElementById("{{ include.id |json }}-false-response").classList.remove("d-none")
+})
+</script>
