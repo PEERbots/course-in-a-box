@@ -1,0 +1,26 @@
+<div class="interactive-section">
+    <p>Your Progress: <span id="tasks-complete-count"></span>/<span id="tasks-total-count"></span> </p>
+    <p id="progress-complete" class="bold d-none">Completed!</p>
+    <div>
+        <button id="tasks-progress-button">Recalculate Progress</button>
+    </div>
+</div>
+<script>
+    function recalculateTaskValues(){
+        const tasksCount = document.querySelectorAll((".interactive-checkbox")).length
+        const checkedTasksCount = document.querySelectorAll((".interactive-checkbox:checked")).length
+        document.getElementById("tasks-complete-count").innerText = checkedTasksCount
+        document.getElementById("tasks-total-count").innerText = tasksCount
+        if (tasksCount == checkedTasksCount){
+            document.getElementById("progress-complete").classList.remove("d-none")
+        }
+    }
+    document.querySelectorAll((".interactive-checkbox")).forEach((el)=>{
+        el.addEventListener("click", ()=>{
+            recalculateTaskValues()
+        })
+    })
+    document.getElementById("tasks-progress-button").addEventListener("click", ()=>{
+        recalculateTaskValues()
+    })
+</script>
