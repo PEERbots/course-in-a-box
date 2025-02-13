@@ -290,4 +290,15 @@ footer {
   font-style: normal;
   font-size: inherit;
   border-radius: 1em;
+
+  input[type='checkbox'] {
+    margin-right: 1em;
+    width:30px;
+    height:30px;
+    border-radius:5px;
+    border:2px solid #555;
+  }
+  input[type='checkbox']:checked {
+      background: #abd;
+}
 }
