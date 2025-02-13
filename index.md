@@ -5,8 +5,8 @@ published: true
 
 [Peerbots](peerbots.org) is building social robots for everyone, powered by experts like you! We make it possible for non-roboticists to get started with social robots through the [Peerbots Platform](app.peerbots.org), even without access to what you might traditionally think of as a robot. In this course, you'll learn about all the components of the Peerbots Platform and how to use them effectively to get the most out of your social robot.
 
-- **[Overview](/modules/overview/what-is-peerbots/)** - See the big picture of the Peerbots Platform and how things fit together.
-- **[Control](/modules/control/overview)** - Control a robot or robot face and track important information about the interaction.
+- **[Overview](/modules/overview/social-robots/)** - We discuss Social Robots, what, why and how, providing an overview of all the tools available in the Peerbots Platform.
+- **[Control](/modules/control/overview)** - We start to get hands on. You'll get to control a robot or robot face.
 - **[Author](/modules/authoring/guidelines)** - Design interactions with a social robot and practice them.
 
 <br>
