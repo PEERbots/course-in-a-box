@@ -7,7 +7,9 @@ published: true
 
 - **[Overview](/modules/overview/social-robots/)** - We discuss Social Robots, what, why and how, providing an overview of all the tools available in the Peerbots Platform.
 - **[Control](/modules/control/overview)** - We start to get hands on. You'll get to control a robot or robot face.
-- **[Author](/modules/authoring/guidelines)** - Design interactions with a social robot and practice them.
+- **[Author](/modules/author/guidelines)** - Design interactions with a social robot.
+- **[Community](/modules/community/acquiring-content)** - Benefit and contibute to an amazing community of experts using Peerbots.
+- **[Refine](/modules/refine/practice)** - Refine your skills at controlling or authoring content by practicing facilitation and reflecting on interactions.
 
 <br>
 
