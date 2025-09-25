@@ -16,11 +16,33 @@
          </a>
        </li>
       {% endfor %}
+      {% assign active_course = page.categories[1] %}
+      {% for module in site.categories[active_course] %}
+        {% capture submodules %}
+          {% if submodules %}
+            {{ submodules | join: "," }},{{ module.categories[2] }}
+          {% else %}
+            {{ module.categories[2] }}
+          {% endif %}
+        {% endcapture %}
+      {% endfor %}
+      {% assign submodules = submodules | remove: " " | split: "," | uniq %}
+      {% for submodule in submodules %}
+      <li class="nav-item py-2">
+        {% assign first_submodule_post = site.categories[submodule]|reverse|first %}
+         <a class="nav-link" href="{{ first_submodule_post }}">
+           {{ submodule }}
+         </a>
+       </li>
+       {% endfor %}
+      
 <!--
       <li class="nav-item py-2">
         <a class="nav-link" href="https://www.p2pu.org/en/" target="_blank">Example Link</a>
       </li>
 -->
-    </ul>
-  </div>
+      </ul>
+      <div>
+        {{ active_course }}
+      </div>
 </nav>

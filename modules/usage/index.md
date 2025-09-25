@@ -1,5 +1,6 @@
 ---
 title: Using The Peerbots Platform
+layout: "page"
 ---
 
 ## Using The Peerbots Platform
