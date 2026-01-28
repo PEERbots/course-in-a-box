@@ -1,5 +1,5 @@
-- id: peerbots-training
-  title: Peerbots Trainings
+- id: getting-started-with-peerbots
+  title: Getting Started With Peerbots
   description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>
   image: img/peerbot-backpack.webp
   modules: ["usage", "authoring"]
