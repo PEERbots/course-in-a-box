@@ -2,47 +2,39 @@
 <nav class="navbar navbar-expand-md py-0 .navbar-dark bg-dark text-light">
   <a class="navbar-brand" href="{{site.baseurl}}/"><i class="fa fa-home"></i></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
   </button>
 
   <div class="navbar-collapse collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      {% for module in site.data.course.modules %}
-       {% assign first_post = site.categories[module]|reverse|first %}
-       <li class="nav-item py-2{% if page.categories[1] == module %} active{% endif %}">
-         <a class="nav-link" href="{{ site.baseurl }}{{ first_post.url }}">
-           {{ module }}
-         </a>
-       </li>
+      {% assign course_id = page.categories[1] %}
+      {% assign active_course = null %}
+      {% for course in site.data.courses %}
+      {% if course.id == course_id %}
+      {% assign active_course = course %}
+      {% endif %}
       {% endfor %}
-      {% assign active_course = page.categories[1] %}
-      {% for module in site.categories[active_course] %}
-        {% capture submodules %}
-          {% if submodules %}
-            {{ submodules | join: "," }},{{ module.categories[2] }}
-          {% else %}
-            {{ module.categories[2] }}
-          {% endif %}
-        {% endcapture %}
+
+      {% if active_course %}
+      {% for module in active_course.modules %}
+      <li class="nav-item py-2{% if page.categories[2] == module %} active{% endif %}">
+        <a class="nav-link" href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module }}">
+          {{ module | capitalize }}
+        </a>
+      </li>
       {% endfor %}
-      {% assign submodules = submodules | remove: " " | split: "," | uniq %}
-      {% for submodule in submodules %}
+      {% else %}
       <li class="nav-item py-2">
-        {% assign first_submodule_post = site.categories[submodule]|reverse|first %}
-         <a class="nav-link" href="{{ first_submodule_post }}">
-           {{ submodule }}
-         </a>
-       </li>
-       {% endfor %}
-      
-<!--
+        <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
+      </li>
+      {% endif %}
+
+      <!--
       <li class="nav-item py-2">
         <a class="nav-link" href="https://www.p2pu.org/en/" target="_blank">Example Link</a>
       </li>
 -->
-      </ul>
-      <div>
-        {{ active_course }}
-      </div>
+    </ul>
 </nav>

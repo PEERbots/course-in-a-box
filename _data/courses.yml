@@ -1,0 +1,4 @@
+- id: peerbots-training
+  title: Peerbots Trainings
+  description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>
+  modules: ["usage", "authoring"]

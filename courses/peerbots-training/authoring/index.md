@@ -1,5 +1,6 @@
 ---
 title: Authoring Robot Interactions
+layout: page
 ---
 
 ## Authoring Robot Interactions

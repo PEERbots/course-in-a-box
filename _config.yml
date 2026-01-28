@@ -13,7 +13,7 @@ exclude: [Gemfile, Gemfile.lock, README.md]
 defaults:
   -
     scope:
-      path: "modules" # an empty string here means all files in the project
+      path: "courses" # an empty string here means all files in the project
     values:
       layout: "course_page"
 
