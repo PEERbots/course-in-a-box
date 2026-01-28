@@ -1,14 +1,7 @@
 ---
-layout: course_page
+layout: course_landing
 title: Intro to Social Robotics
-category: course
+categories: [course, intro-to-social-robotics]
 ---
 
-Welcome to the Intro to Social Robotics course!
-
-In this course, you will learn:
-- The basics of social robotics.
-- How to design social interactions.
-- How to use robots to engage people.
-
-Select a module from the navigation bar above to get started.
+Welcome to the Intro to Social Robotics course! Here you will explore the fascinating world of human-robot interaction and social cues.

@@ -1,6 +1,7 @@
 ---
-layout: base
+layout: course_landing
 title: Getting Started With Peerbots
+categories: [course, getting-started-with-peerbots]
 ---
 
 In this course, you'll learn about all the components of the Peerbots Platform and how to use them effectively to get the most out of your social robot.

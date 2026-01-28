@@ -1,0 +1,53 @@
+---
+layout: base
+---
+{% assign course_id = page.url | split: '/' | slice: 2 | first %}
+{% assign active_course = null %}
+{% for course in site.data.courses %}
+{% if course.id == course_id %}
+{% assign active_course = course %}
+{% endif %}
+{% endfor %}
+
+<div class="jumbotron jumbotron-fluid bg-light border-bottom">
+    <div class="container text-center">
+        {% if active_course.image %}
+        <img src="{{ site.baseurl }}/{{ active_course.image }}" alt="{{ active_course.title }} Icon"
+            class="mb-3 roundedShadow" style="max-height: 150px;" />
+        {% endif %}
+        <h1 class="display-4">{{ active_course.title }}</h1>
+        <p class="lead">{{ active_course.description }}</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="content mb-5">
+                <h2 class="mb-4 text-center">Course Modules</h2>
+                <div class="row justify-content-center">
+                    {% for module in active_course.modules %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center d-flex flex-column">
+                                <h3 class="card-title text-primary h4">{{ module | capitalize }}</h3>
+                                <p class="card-text text-muted small">Explore the {{ module }} components of this
+                                    course.
+                                </p>
+                                <div class="mt-auto pt-3">
+                                    <a href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module }}/"
+                                        class="btn btn-outline-primary btn-sm">Explore Module</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {{ content }}
+            </div>
+
+            <hr class="my-5">
+
+        </div>
+    </div>
+</div>
