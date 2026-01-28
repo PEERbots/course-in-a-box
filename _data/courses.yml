@@ -2,10 +2,31 @@
   title: Getting Started With Peerbots
   description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>
   image: img/peerbot-backpack.webp
-  modules: ["overview", "control", "author", "community", "refine"]
+  modules:
+    - id: overview
+      title: Overview
+      description: Learn about Social Robots and an overview of all the tools available in the Peerbots Platform.
+    - id: control
+      title: Control
+      description: Get hands-on and start controlling your robot or robot face.
+    - id: author
+      title: Author
+      description: Design your own social robot interactions.
+    - id: community
+      title: Community
+      description: Connect with experts and share content within the Peerbots community.
+    - id: refine
+      title: Refine
+      description: Practice and reflect on your skills to learn the art of robot control.
 
 - id: intro-to-social-robotics
   title: Intro to Social Robotics
   description: Learn the fundamentals of social robotics and how to build interactions.
   image: img/misty.jpg
-  modules: ["basics", "interactions"]
+  modules:
+    - id: basics
+      title: Robotics Basics
+      description: An introduction to the core concepts and history of social robotics.
+    - id: interactions
+      title: Interaction Design
+      description: Learn how to design effective social cues and verbal communication.

@@ -30,12 +30,12 @@ layout: base
                     <div class="col-md-6 mb-4">
                         <div class="card h-100 border-primary">
                             <div class="card-body text-center d-flex flex-column">
-                                <h3 class="card-title text-primary h4">{{ module | capitalize }}</h3>
-                                <p class="card-text text-muted small">Explore the {{ module }} components of this
-                                    course.
+                                <h3 class="card-title text-primary h4">{{ module.title }}</h3>
+                                <p class="card-text text-muted small">
+                                    {{ module.description }}
                                 </p>
                                 <div class="mt-auto pt-3">
-                                    <a href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module }}/"
+                                    <a href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module.id }}/"
                                         class="btn btn-outline-primary btn-sm">Explore Module</a>
                                 </div>
                             </div>
