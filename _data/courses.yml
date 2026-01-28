@@ -1,4 +1,11 @@
 - id: peerbots-training
   title: Peerbots Trainings
   description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>
+  image: img/peerbot-backpack.webp
   modules: ["usage", "authoring"]
+
+- id: intro-to-social-robotics
+  title: Intro to Social Robotics
+  description: Learn the fundamentals of social robotics and how to build interactions.
+  image: img/misty.jpg
+  modules: ["basics", "interactions"]
