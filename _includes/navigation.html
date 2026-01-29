@@ -29,6 +29,7 @@
           {{ active_course.title }}
         </a>
       </li>
+      {% if active_course.status == "published" %}
       {% for module in active_course.modules %}
       <li class="nav-item py-2{% if page.url contains module.id %} active{% endif %}">
         {% capture module_url %}{% include get_first_post_url.html course_id=active_course.id module_id=module.id %}{%
@@ -38,6 +39,7 @@
         </a>
       </li>
       {% endfor %}
+      {% endif %}
       {% else %}
       {% for course in site.data.courses %}
       {% if course.status == "published" %}
