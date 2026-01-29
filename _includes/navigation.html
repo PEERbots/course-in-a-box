@@ -1,26 +1,59 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md py-0 .navbar-dark bg-dark text-light">
+<nav class="navbar navbar-expand-md py-0 navbar-dark bg-dark text-light">
   <a class="navbar-brand" href="{{site.baseurl}}/"><i class="fa fa-home"></i></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fa fa-bars"></i>
   </button>
 
   <div class="navbar-collapse collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      {% for module in site.data.course.modules %}
-       {% assign first_post = site.categories[module]|reverse|first %}
-       <li class="nav-item py-2{% if page.categories[1] == module %} active{% endif %}">
-         <a class="nav-link" href="{{ site.baseurl }}{{ first_post.url }}">
-           {{ module }}
-         </a>
-       </li>
+      {% assign course_id = page.url | split: '/' | slice: 2 %}
+      {% if page.url contains '/courses/' %}
+      {% assign course_id = page.url | split: '/' | slice: 2 | first %}
+      {% else %}
+      {% assign course_id = null %}
+      {% endif %}
+
+      {% assign active_course = null %}
+      {% for course in site.data.courses %}
+      {% if course.id == course_id %}
+      {% assign active_course = course %}
+      {% endif %}
       {% endfor %}
-<!--
+
+      {% if active_course %}
       <li class="nav-item py-2">
-        <a class="nav-link" href="https://www.p2pu.org/en/" target="_blank">Example Link</a>
+        <a class="nav-link font-weight-bold" href="{{ site.baseurl }}/courses/{{ active_course.id }}/">
+          {{ active_course.title }}
+        </a>
       </li>
--->
+      {% if active_course.status == "published" %}
+      {% for module in active_course.modules %}
+      <li class="nav-item py-2{% if page.url contains module.id %} active{% endif %}">
+        {% capture module_url %}{% include get_first_post_url.html course_id=active_course.id module_id=module.id %}{%
+        endcapture %}
+        <a class="nav-link" href="{{ module_url | strip }}">
+          {{ module.title }}
+        </a>
+      </li>
+      {% endfor %}
+      {% endif %}
+      {% else %}
+      {% for course in site.data.courses %}
+      {% if course.status == "published" %}
+      <li class="nav-item py-2">
+        {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}
+        {% capture course_url %}{% include get_first_post_url.html course_id=course.id module_id=first_module_id %}{%
+        endcapture %}
+        <a class="nav-link" href="{{ course_url | strip }}">
+          {{ course.title }}
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
     </ul>
   </div>
 </nav>

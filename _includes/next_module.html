@@ -1,17 +1,28 @@
-{% assign next=null %}
-{% assign prev=null %}
-{% assign temp=null %}
+{% assign module_next=null %}
+{% assign module_prev=null %}
+{% assign module_next_post=null %}
+{% assign module_prev_post=null %}
 
-{% for m in site.data.course.modules %}
-	{% if m == module and forloop.first != true %}
-		{% assign p = forloop.index0 | minus:1  %}
-		{% assign prev = site.data.course.modules[p] %}
-		{% assign prev_post = site.categories[prev]|reverse|first %}
-	{% endif %}
-	{% if m == module and forloop.last != true %}
-		{% assign n = forloop.index0 | plus:1  %}
-		{% assign next = site.data.course.modules[n] %}
-		{% assign next_post = site.categories[next]|reverse|first %}
-	{% endif %}
+{% assign active_course = null %}
+{% for course in site.data.courses %}
+{% if course.id == course_id %}
+{% assign active_course = course %}
+{% endif %}
 {% endfor %}
 
+{% if active_course %}
+{% for m in active_course.modules %}
+{% if m.id == module %}
+{% if forloop.first != true %}
+{% assign p = forloop.index0 | minus:1 %}
+{% assign module_prev = active_course.modules[p] %}
+{% assign module_prev_post = site.categories[module_prev.id]|reverse|first %}
+{% endif %}
+{% if forloop.last != true %}
+{% assign n = forloop.index0 | plus:1 %}
+{% assign module_next = active_course.modules[n] %}
+{% assign module_next_post = site.categories[module_next.id]|reverse|first %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}

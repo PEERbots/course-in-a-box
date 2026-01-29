@@ -1,0 +1,57 @@
+- id: getting-started-with-peerbots
+  title: Getting Started With Peerbots
+  status: published
+  description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>.
+  image: img/peerbot-backpack.webp
+  modules:
+    - id: overview
+      title: Overview
+      description: Learn about Social Robots and an overview of all the tools available in the Peerbots Platform.
+    - id: control
+      title: Control
+      description: Get hands-on and start controlling your robot or robot face.
+    - id: author
+      title: Author
+      description: Design your own social robot interactions.
+    - id: community
+      title: Community
+      description: Connect with experts and share content within the Peerbots community.
+    - id: refine
+      title: Refine
+      description: Practice and reflect on your skills to learn the art of robot control.
+
+- id: intro-to-social-robotics
+  title: Introduction to Social Robotics
+  status: coming_soon
+  description: Learn the basics of designing, controlling and programming social robots with Peerbots.
+  modules:
+    - id: body
+      title: Robot Body Design
+      description: Learn about robot body design and the consequences of those decisions.
+    - id: character
+      title: Character Design
+      description: Learn to design robot characters, character traits and a backstory.
+    - id: storyboarding
+      title: Interaction Storyboarding
+      description: Learn to storyboard your social robot interactions.
+    - id: interaction-prototyping
+      title: Interaction Prototyping
+      description: Prototype your social robot interactions with the Peerbots Platform..
+    - id: interaction-programming
+      title: Interaction Programming
+      description: Program your social robot interaction with the Peerbots API.
+
+- id: sewing-and-social-robots
+  title: Sewing and Social Robots
+  status: coming_soon
+  description: Learn how sewing can help you build soft body social robots.
+
+- id: social-robot-gardener
+  title: Social Robot Gardener
+  status: coming_soon
+  description: Learn how to build a social robot gardener using Peerbots and moisture sensors.
+  
+- id: social-robot-theater
+  title: Social Robot Theater
+  status: coming_soon
+  description: Learn how to incorporate social robots into a theater performance.

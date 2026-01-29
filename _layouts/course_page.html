@@ -1,26 +1,38 @@
 ---
 layout: base
 ---
-{% assign module=page.categories[1] %}
+{% assign module=page.categories[2] %}
+{% assign course_id=page.categories[1] %}
+{% include next_in_module.html %}
+
+{% assign active_course = null %}
+{% for course in site.data.courses %}
+{% if course.id == course_id %}
+{% assign active_course = course %}
+{% break %}
+{% endif %}
+{% endfor %}
+
 <div class="container-fluid d-flex flex-grow-1 flex-column">
-  <div class="row flex-grow-1">
+	{% if active_course.status == "published" %}
+	<div class="row flex-grow-1">
 		{% include side_toolbar.html %}
 		<div class="col-xl-6 col-md-9 bg-white">
 			<div class="content p-md-2">
 				{{ content }}
-				{% include next_in_module.html %}
-				{% if prev or next %}<hr />{% endif %}
-        <div class="row">
+				{% if prev or next %}
+				<hr />{% endif %}
+				<div class="row">
 					<div class="pagination-section col-sm-6">
-				{% if prev %}
+						{% if prev %}
 						<div class="title">
 							Previous submodule:
 						</div>
 						<a rel="prev" class="prev" href="{{ site.baseurl }}{{ prev.url }}">
 							{{ prev.title }} </a>
-				{% endif %}
+						{% endif %}
 					</div>
-				{% if next %}
+					{% if next %}
 					<div class="pagination-section text-sm-right col-sm-6">
 						<div class="title">
 							Next submodule:
@@ -28,9 +40,50 @@ layout: base
 						<a rel="next" class="next" href="{{ site.baseurl }}{{ next.url }}"> {{ next.title }}
 						</a>
 					</div>
+					{% else %}
+					{% assign current_module_index = -1 %}
+					{% for mod in active_course.modules %}
+					{% if mod.id == module %}
+					{% assign current_module_index = forloop.index0 %}
+					{% break %}
+					{% endif %}
+					{% endfor %}
+					{% assign next_module_index = current_module_index | plus: 1 %}
+					{% if next_module_index < active_course.modules.size %} {% assign
+						next_module=active_course.modules[next_module_index] %} <div
+						class="pagination-section text-sm-right col-sm-6">
+						<div class="title">
+							Next module:
+						</div>
+						{% capture next_module_url %}{% include get_first_post_url.html course_id=course_id
+						module_id=next_module.id %}{% endcapture %}
+						<a rel="next" class="next" href="{{ next_module_url | strip }}"> {{ next_module.title }}
+						</a>
+				</div>
+				{% else %}
+				<div class="pagination-section text-sm-right col-sm-6">
+					<div class="title">
+						Course complete!
+					</div>
+					<a class="next" href="{{ site.baseurl }}/courses/{{ course_id }}/"> Back to Course page
+						<!-- {{ active_course.title }} -->
+					</a>
+				</div>
 				{% endif %}
-        </div>
+				{% endif %}
 			</div>
 		</div>
-  </div>
+	</div>
+	{% else %}
+	<div class="row flex-grow-1 justify-content-center align-items-center">
+		<div class="col-md-6 text-center py-5">
+			<h1 class="display-1 text-muted">404</h1>
+			<h2 class="h4">Post not found</h2>
+			<p class="lead">This content belongs to a course that is not yet fully published. Please check back later!
+			</p>
+			<a href="{{ site.baseurl }}/" class="btn btn-primary mt-3">Return Home</a>
+		</div>
+	</div>
+	{% endif %}
+</div>
 </div>

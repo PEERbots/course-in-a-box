@@ -8,7 +8,7 @@ With the Peerbots controller, the primary focus is on controlling a robot's verb
 
 In the simplest view of the Peerbots Controller, you'll see many buttons. Each button will initiate something as part of the controller. The buttons view will look something like this:
 
-![An example of the buttons view showing many buttons on the page.](../../../img/buttons_view.png)
+![An example of the buttons view showing many buttons on the page.](/img/buttons_view.png)
 
 ## Button Types
 

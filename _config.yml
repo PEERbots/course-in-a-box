@@ -13,7 +13,7 @@ exclude: [Gemfile, Gemfile.lock, README.md]
 defaults:
   -
     scope:
-      path: "modules" # an empty string here means all files in the project
+      path: "courses" # an empty string here means all files in the project
     values:
       layout: "course_page"
 
@@ -32,4 +32,8 @@ prose:
 jumbotron_color: "#d8e7eb"
 # jumbotron_image: "img/peerbots-img.png"
 # jumbotron_mask: "img/jumbotron-mask.svg"
-jumbotron_icon: "img/logo.png"
+jumbotron_icon: "img/logo-and-tagline.png"
+hide_jumbotron_text: false
+
+title: "Peerbots Courses"
+description: 

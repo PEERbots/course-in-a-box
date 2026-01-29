@@ -1,0 +1,14 @@
+{% assign module_posts = site.categories[include.module_id] %}
+{% assign first_post = null %}
+{% for post in module_posts reversed %}
+{% if post.categories contains include.course_id %}
+{% assign first_post = post %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+{% if first_post %}
+{{ first_post.url | prepend: site.baseurl }}
+{% else %}
+{{ site.baseurl }}/courses/{{ include.course_id }}/{{ include.module_id }}/
+{% endif %}

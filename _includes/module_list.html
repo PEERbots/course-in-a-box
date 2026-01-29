@@ -1,0 +1,44 @@
+{% assign non_draft_modules = active_course.modules | where_exp: "module", "module.status != 'draft'" %}
+
+{% if non_draft_modules.size > 0 %}
+{% assign is_published = false %}
+{% if active_course.status == "published" %}
+{% assign is_published = true %}
+{% endif %}
+
+<h2 class="mb-4 text-center">
+    {% if is_published %}Course Modules{% else %}Course Preview{% endif %}
+</h2>
+
+<div class="row justify-content-center">
+    {% for module in non_draft_modules %}
+    <div class="col-md-6 mb-4">
+        {% if is_published %}
+        {% capture module_url %}
+        {% include get_first_post_url.html course_id=active_course.id module_id=module.id %}
+        {% endcapture %}
+        <a href="{{ module_url | strip }}" class="text-decoration-none h-100 d-block">
+            {% endif %}
+
+            <div class="card h-100 border-primary {% unless is_published %}opacity-75{% endunless %}">
+                <div class="card-body text-center d-flex flex-column">
+                    <h3 class="card-title text-primary h4">{{ module.title }}</h3>
+                    <p class="card-text text-muted small">
+                        {{ module.description }}
+                    </p>
+
+                    {% if is_published %}
+                    <div class="mt-auto pt-3">
+                        <span class="btn btn-outline-primary btn-sm">Explore Module</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if is_published %}
+        </a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

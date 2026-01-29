@@ -2,13 +2,13 @@
 title: Social Robots
 ---
 
-## Social Robots? What's that?
+## Social Robot? What's that?
 
-At Peerbots, we think of social robots as any emodied chatacter that you can socially interact with, for example, that you can talk to. There are several types of social robots. Most notably, socially assistive robots, are those that use their social interaction to help people.
+At Peerbots, we think of social robots as any embodied character that you can socially interact with, for example, that you can talk to. There are several types of social robots. Most notably, socially assistive robots, are those that use their social interaction to help people.
 
 But enough with the jargon, you can think of a social robot as anything with a character that you can talk to. Social robots can appear in many shapes and sizes, and can have different capabilities.
 
-You've probably seen and interacted with social robots before if you've been to a theme park or haunted house. You probably just didn't think of them as robots because they emody the character so well.
+You've probably seen and interacted with social robots before if you've been to a theme park or haunted house. You probably just didn't think of them as robots because they embody the character so well.
 
 ## Examples of Social Robots
 

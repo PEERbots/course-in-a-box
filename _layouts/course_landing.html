@@ -1,0 +1,48 @@
+---
+layout: base
+---
+{% assign course_id = page.url | split: '/' | slice: 2 | first %}
+{% assign active_course = null %}
+{% for course in site.data.courses %}
+{% if course.id == course_id %}
+{% assign active_course = course %}
+{% endif %}
+{% endfor %}
+
+<div class="jumbotron jumbotron-fluid bg-light border-bottom">
+    <div class="container text-center">
+        {% if active_course.image %}
+        <img src="{{ site.baseurl }}/{{ active_course.image }}" alt="{{ active_course.title }} Icon"
+            class="mb-3 roundedShadow" style="max-height: 150px;" />
+        {% endif %}
+        <h1 class="display-4">{{ active_course.title }}</h1>
+        <p class="lead">{{ active_course.description }}</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="content mb-5">
+                {% if active_course.status != "published" %}
+                <div class="alert alert-warning text-center">
+                    <h3 class="h4">Coming Soon!</h3>
+                    <p>This course is currently in development. Check back later for updates!</p>
+                </div>
+
+                <div class="d-flex justify-content-center py-5">
+                    <givebutter-widget id="gV609g"></givebutter-widget>
+                </div>
+                {% endif %}
+
+                {% include module_list.html %}
+
+                {{ content }}
+            </div>
+
+
+            <hr class="my-5">
+
+        </div>
+    </div>
+</div>
