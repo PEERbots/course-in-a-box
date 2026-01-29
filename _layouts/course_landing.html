@@ -24,6 +24,7 @@ layout: base
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
             <div class="content mb-5">
+                {% if active_course.status == "published" %}
                 <h2 class="mb-4 text-center">Course Modules</h2>
                 <div class="row justify-content-center">
                     {% for module in active_course.modules %}
@@ -45,6 +46,15 @@ layout: base
                     </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                <div class="alert alert-warning text-center">
+                    <h3 class="h4">Coming Soon!</h3>
+                    <p>We're working hard to bring you this course. Check back later for updates!</p>
+                </div>
+                <div class="d-flex justify-content-center py-5">
+                    <givebutter-widget id="gV609g"></givebutter-widget>
+                </div>
+                {% endif %}
                 {{ content }}
             </div>
 

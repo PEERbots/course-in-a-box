@@ -17,7 +17,9 @@ def sync_modules
 
   courses.each do |course|
     course_id = course['id']
-    modules = course['modules'] || []
+    modules = course['modules']
+    
+    next if modules.nil? || modules.empty?
 
     modules.each do |mod|
       # Handle both string modules and object modules

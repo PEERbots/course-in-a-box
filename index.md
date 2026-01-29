@@ -14,20 +14,30 @@ published: true
 
   <div class="row">
     {% for course in site.data.courses %}
+    {% if course.status == "draft" %}{% continue %}{% endif %}
     <div class="col-md-6 mb-4">
-      <div class="card h-100 shadow-sm border-0">
+      <div class="card h-100 shadow-sm border-0 {% if course.status == 'coming_soon' %}opacity-50{% endif %}">
         {% if course.image %}
-        <div style="height: 250px; overflow: hidden;">
-          <img src="{{ site.baseurl }}/{{ course.image }}" class="card-img-top" alt="{{ course.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="height: 250px; overflow: hidden; position: relative;">
+          <img src="{{ site.baseurl }}/{{ course.image }}" class="card-img-top" alt="{{ course.title }}" style="width: 100%; height: 100%; object-fit: cover; {% if course.status == 'coming_soon' %}filter: grayscale(80%);{% endif %}">
+          {% if course.status == "coming_soon" %}
+          <div class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center" style="top: 0; left: 0; background: rgba(0,0,0,0.1);">
+            <span class="badge badge-warning p-2 px-3 shadow">Coming Soon</span>
+          </div>
+          {% endif %}
         </div>
         {% endif %}
         <div class="card-body d-flex flex-column">
           <h3 class="card-title">{{ course.title }}</h3>
           <p class="card-text text-muted">{{ course.description }}</p>
           <div class="mt-auto">
-            {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}
-            {% capture start_url %}{% include get_first_post_url.html course_id=course.id module_id=first_module_id %}{% endcapture %}
-            <a href="{{ start_url | strip }}" class="btn btn-primary text-white btn-lg btn-block">Start Course</a>
+            {% if course.status == "published" %}
+              {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}
+              {% capture start_url %}{% include get_first_post_url.html course_id=course.id module_id=first_module_id %}{% endcapture %}
+              <a href="{{ start_url | strip }}" class="btn btn-primary text-white btn-lg btn-block">Start Course</a>
+            {% else %}
+              <button class="btn btn-secondary btn-lg btn-block" disabled>Stay Tuned!</button>
+            {% endif %}
           </div>
         </div>
       </div>

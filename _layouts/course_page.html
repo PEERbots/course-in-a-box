@@ -4,7 +4,17 @@ layout: base
 {% assign module=page.categories[2] %}
 {% assign course_id=page.categories[1] %}
 {% include next_in_module.html %}
+
+{% assign active_course = null %}
+{% for course in site.data.courses %}
+{% if course.id == course_id %}
+{% assign active_course = course %}
+{% break %}
+{% endif %}
+{% endfor %}
+
 <div class="container-fluid d-flex flex-grow-1 flex-column">
+	{% if active_course.status == "published" %}
 	<div class="row flex-grow-1">
 		{% include side_toolbar.html %}
 		<div class="col-xl-6 col-md-9 bg-white">
@@ -31,13 +41,6 @@ layout: base
 						</a>
 					</div>
 					{% else %}
-					{% assign active_course = null %}
-					{% for course in site.data.courses %}
-					{% if course.id == course_id %}
-					{% assign active_course = course %}
-					{% break %}
-					{% endif %}
-					{% endfor %}
 					{% assign current_module_index = -1 %}
 					{% for mod in active_course.modules %}
 					{% if mod.id == module %}
@@ -71,5 +74,16 @@ layout: base
 			</div>
 		</div>
 	</div>
+	{% else %}
+	<div class="row flex-grow-1 justify-content-center align-items-center">
+		<div class="col-md-6 text-center py-5">
+			<h1 class="display-1 text-muted">404</h1>
+			<h2 class="h4">Post not found</h2>
+			<p class="lead">This content belongs to a course that is not yet fully published. Please check back later!
+			</p>
+			<a href="{{ site.baseurl }}/" class="btn btn-primary mt-3">Return Home</a>
+		</div>
+	</div>
+	{% endif %}
 </div>
 </div>

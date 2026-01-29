@@ -1,5 +1,6 @@
 - id: getting-started-with-peerbots
   title: Getting Started With Peerbots
+  status: published
   description: Guided walkthroughs for effectively using the <a href="https://app.peerbots.org">Peerbots Platform</a>
   image: img/peerbot-backpack.webp
   modules:
@@ -21,5 +22,28 @@
 
 - id: intro-to-social-robotics
   title: Intro to Social Robotics
+  status: coming_soon
   description: Learn the fundamentals of social robotics and how to build interactions.
+  image: img/misty.jpg
+  modules:
+    - id: body
+      title: Robot Body Design
+      description: Learn about robot body design and the consequences of those decisions.
+    - id: character
+      title: Character Design
+      description: Learn to design robot characters, character traits and a backstory.
+    - id: storyboarding
+      title: Interaction Storyboarding
+      description: Learn to storyboard your social robot interactions.
+    - id: interaction-prototyping
+      title: Interaction Prototyping
+      description: Prototype your social robot interactions with the Peerbots Platform..
+    - id: interaction-programming
+      title: Interaction Programming
+      description: Program your social robot interaction with the Peerbots API.
+
+- id: sewing-and-social-robots
+  title: Sewing and Social Robots
+  status: draft
+  description: Learn how to sew and build your own social robot.
   image: img/misty.jpg
