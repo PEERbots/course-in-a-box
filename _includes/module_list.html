@@ -1,16 +1,17 @@
+{% assign non_draft_modules = active_course.modules | where_exp: "module", "module.status != 'draft'" %}
+
+{% if non_draft_modules.size > 0 %}
 {% assign is_published = false %}
 {% if active_course.status == "published" %}
 {% assign is_published = true %}
-{%endif%}
+{% endif %}
 
 <h2 class="mb-4 text-center">
     {% if is_published %}Course Modules{% else %}Course Preview{% endif %}
 </h2>
 
 <div class="row justify-content-center">
-    {% for module in active_course.modules %}
-    {% if module.status == "draft" %}{% continue %}{% endif %}
-
+    {% for module in non_draft_modules %}
     <div class="col-md-6 mb-4">
         {% if is_published %}
         {% capture module_url %}
@@ -40,3 +41,4 @@
     </div>
     {% endfor %}
 </div>
+{% endif %}

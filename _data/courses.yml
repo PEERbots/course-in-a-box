@@ -43,5 +43,15 @@
 
 - id: sewing-and-social-robots
   title: Sewing and Social Robots
-  status: draft
-  description: Learn how to sew and build your own social robot.
+  status: coming_soon
+  description: Learn how sewing can help you build soft body social robots.
+
+- id: social-robot-gardener
+  title: Social Robot Gardener
+  status: coming_soon
+  description: Learn how to build a social robot gardener using Peerbots and moisture sensors.
+  
+- id: social-robot-theater
+  title: Social Robot Theater
+  status: coming_soon
+  description: Learn how to incorporate social robots into a theater performance.
