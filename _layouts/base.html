@@ -11,14 +11,62 @@
   <meta charset="utf-8">
   <!--[if IE]><meta content='IE=8' http-equiv='X-UA-Compatible' /><![endif]-->
 
-  <title>{{ site.data.course.title|strip_html }}{% if page.title %} | {{ page.title|strip_html }}{% endif %}</title>
-  {% if site.data.course.description %}
-  <meta name="description" content="{{ site.data.course.description | strip_html}}">{% endif %}
+  {% assign course_id = nil %}
+  {% assign module_id = nil %}
+
+  {% if page.layout == 'course_landing' %}
+  {% assign course_id = page.url | split: '/' | slice: 2 | first %}
+  {% elsif page.layout == 'course_page' %}
+  {% assign course_id = page.categories[1] %}
+  {% assign module_id = page.categories[2] %}
+  {% endif %}
+
+  {% assign active_course = nil %}
+  {% if course_id %}
+  {% for course in site.data.courses %}
+  {% if course.id == course_id %}
+  {% assign active_course = course %}
+  {% break %}
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% assign active_module = nil %}
+  {% if module_id and active_course %}
+  {% for mod in active_course.modules %}
+  {% if mod.id == module_id %}
+  {% assign active_module = mod %}
+  {% break %}
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% assign dynamic_title = site.title %}
+  {% if active_course %}
+  {% if page.layout == 'course_landing' %}
+  {% assign dynamic_title = active_course.title | append: " | " | append: site.title %}
+  {% elsif page.layout == 'course_page' %}
+  {% assign dynamic_title = page.title | append: " | " | append: active_course.title | append: " | " | append:
+  site.title %}
+  {% endif %}
+  {% elsif page.title and page.title != site.title %}
+  {% assign dynamic_title = page.title | append: " | " | append: site.title %}
+  {% endif %}
+
+  {% assign dynamic_description = site.description %}
+  {% if active_module.description %}
+  {% assign dynamic_description = active_module.description %}
+  {% elsif active_course.description %}
+  {% assign dynamic_description = active_course.description %}
+  {% endif %}
+
+  <title>{{ dynamic_title | strip_html }}</title>
+  <meta name="description" content="{{ dynamic_description | strip_html }}">
   <meta name="author" content="{{ site.github.owner_name }}">
 
-  <meta property="og:title" content="{{ site.data.course.title }}" />
+  <meta property="og:title" content="{{ dynamic_title | strip_html }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ site.github.url }}" />
+  <meta property="og:url" content="{{ site.github.url }}{{ page.url }}" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
