@@ -25,7 +25,9 @@ published: true
           <h3 class="card-title">{{ course.title }}</h3>
           <p class="card-text text-muted">{{ course.description }}</p>
           <div class="mt-auto">
-            <a href="{{ site.baseurl }}/courses/{{ course.id }}/" class="btn btn-primary text-white btn-lg btn-block">Start Course</a>
+            {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}
+            {% capture start_url %}{% include get_first_post_url.html course_id=course.id module_id=first_module_id %}{% endcapture %}
+            <a href="{{ start_url | strip }}" class="btn btn-primary text-white btn-lg btn-block">Start Course</a>
           </div>
         </div>
       </div>

@@ -31,7 +31,9 @@
       </li>
       {% for module in active_course.modules %}
       <li class="nav-item py-2{% if page.url contains module.id %} active{% endif %}">
-        <a class="nav-link" href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module.id }}">
+        {% capture module_url %}{% include get_first_post_url.html course_id=active_course.id module_id=module.id %}{%
+        endcapture %}
+        <a class="nav-link" href="{{ module_url | strip }}">
           {{ module.title }}
         </a>
       </li>
@@ -39,7 +41,10 @@
       {% else %}
       {% for course in site.data.courses %}
       <li class="nav-item py-2">
-        <a class="nav-link" href="{{ site.baseurl }}/courses/{{ course.id }}/">
+        {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}
+        {% capture course_url %}{% include get_first_post_url.html course_id=course.id module_id=first_module_id %}{%
+        endcapture %}
+        <a class="nav-link" href="{{ course_url | strip }}">
           {{ course.title }}
         </a>
       </li>

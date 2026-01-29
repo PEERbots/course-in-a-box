@@ -23,10 +23,3 @@
   title: Intro to Social Robotics
   description: Learn the fundamentals of social robotics and how to build interactions.
   image: img/misty.jpg
-  modules:
-    - id: basics
-      title: Robotics Basics
-      description: An introduction to the core concepts and history of social robotics.
-    - id: interactions
-      title: Interaction Design
-      description: Learn how to design effective social cues and verbal communication.

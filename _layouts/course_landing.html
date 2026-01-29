@@ -35,8 +35,10 @@ layout: base
                                     {{ module.description }}
                                 </p>
                                 <div class="mt-auto pt-3">
-                                    <a href="{{ site.baseurl }}/courses/{{ active_course.id }}/{{ module.id }}/"
-                                        class="btn btn-outline-primary btn-sm">Explore Module</a>
+                                    {% capture module_url %}{% include get_first_post_url.html
+                                    course_id=active_course.id module_id=module.id %}{% endcapture %}
+                                    <a href="{{ module_url | strip }}" class="btn btn-outline-primary btn-sm">Explore
+                                        Module</a>
                                 </div>
                             </div>
                         </div>
