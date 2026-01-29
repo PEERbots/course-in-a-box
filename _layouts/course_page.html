@@ -3,13 +3,13 @@ layout: base
 ---
 {% assign module=page.categories[2] %}
 {% assign course_id=page.categories[1] %}
+{% include next_in_module.html %}
 <div class="container-fluid d-flex flex-grow-1 flex-column">
 	<div class="row flex-grow-1">
 		{% include side_toolbar.html %}
 		<div class="col-xl-6 col-md-9 bg-white">
 			<div class="content p-md-2">
 				{{ content }}
-				{% include next_in_module.html %}
 				{% if prev or next %}
 				<hr />{% endif %}
 				<div class="row">

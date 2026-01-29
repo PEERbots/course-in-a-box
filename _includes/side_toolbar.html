@@ -1,17 +1,26 @@
 <div class="sidebar col-md-3">
 	{% include next_module.html %}
 
-	{% if prev %}
+	{% if module_prev %}
 	<div class="pagination-section">
 		<div class="title">
 			Previous module:
 		</div>
-		<a rel="prev" class="prev" href="{{ site.baseurl }}{{ prev_post.url }}">
-			{{ prev }} </a>
+		<a rel="prev" class="prev" href="{{ site.baseurl }}{{ module_prev_post.url }}">
+			{{ module_prev.title }} </a>
 	</div>
 	<hr />
 	{% endif %}
-	<ul>
+	{% if prev %}
+	<div class="pagination-section ml-4">
+		<div class="title small text-muted">
+			Previous submodule:
+		</div>
+		<a rel="prev" class="prev small" href="{{ site.baseurl }}{{ prev.url }}">
+			{{ prev.title }} </a>
+	</div>
+	{% endif %}
+	<ul class="my-2">
 		{% for post in site.categories[module] reversed %}
 		{% if post.categories contains course_id %}
 		<li
@@ -24,12 +33,21 @@
 		{% endfor %}
 	</ul>
 	{% if next %}
+	<div class="pagination-section ml-4">
+		<div class="title small text-muted">
+			Next submodule:
+		</div>
+		<a rel="next" class="next small" href="{{ site.baseurl }}{{ next.url }}"> {{ next.title }}
+		</a>
+	</div>
+	{% endif %}
+	{% if module_next %}
 	<hr />
 	<div class="pagination-section">
 		<div class="title">
 			Next module:
 		</div>
-		<a rel="next" class="next" href="{{ site.baseurl }}{{ next_post.url }}"> {{ next }}
+		<a rel="next" class="next" href="{{ site.baseurl }}{{ module_next_post.url }}"> {{ module_next.title }}
 		</a>
 	</div>
 	{% endif %}
