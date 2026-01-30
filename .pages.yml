@@ -36,7 +36,8 @@ components:
       - name: type
         label: Type
         type: select
-        options: [info, warning, success, danger]
+        options: 
+          values: ["info", "warning", "success", "danger"]
         default: info
 
   truefalse:
@@ -104,7 +105,8 @@ content:
       - name: status
         label: Status
         type: select
-        options: [published, coming_soon, draft]
+        options: 
+          values: ["published", "coming_soon", "draft"]
       - name: description
         label: Description
         type: text
@@ -113,7 +115,8 @@ content:
         type: image
       - name: modules
         label: Modules
-        type: list
+        type: object
+        list: true
         fields:
           - name: id
             label: Module ID
@@ -138,11 +141,12 @@ content:
       - name: layout
         label: Layout
         type: select
-        options: [module_landing, course_landing]
+        options: 
+          values: ["module_landing", "course_landing"]
       - name: categories
         label: Categories
-        type: list
+        type: string
+        list: true
       - name: body
         label: Body
         type: rich-text
-        components: [image, video, callout, truefalse, interactive_check, interactive_progress]
