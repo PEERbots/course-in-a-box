@@ -1,73 +1,4 @@
 media: "img"
-
-components:
-  image:
-    label: Image
-    fields:
-      - name: src
-        label: Image
-        type: image
-      - name: alt
-        label: Alt Text
-        type: string
-      - name: caption
-        label: Caption
-        type: string
-
-  video:
-    label: Video Embed
-    fields:
-      - name: url
-        label: Video URL (YouTube/Vimeo)
-        type: string
-      - name: title
-        label: Title
-        type: string
-
-  callout:
-    label: Callout Box
-    fields:
-      - name: title
-        label: Title
-        type: string
-      - name: text
-        label: Text
-        type: text
-      - name: type
-        label: Type
-        type: select
-        options: 
-          values: ["info", "warning", "success", "danger"]
-        default: info
-
-  truefalse:
-    label: True/False Question
-    fields:
-      - name: id
-        label: Unique ID
-        type: string
-        required: true
-      - name: statement
-        label: Statement
-        type: string
-      - name: true_response
-        label: Response if True
-        type: string
-      - name: false_response
-        label: Response if False
-        type: string
-
-  interactive_check:
-    label: Interactive Checkbox
-    fields:
-      - name: statement
-        label: Task Statement
-        type: string
-
-  interactive_progress:
-    label: Interactive Progress Tracker
-    fields: [] # No fields needed
-
 content:
   - name: settings
     label: Global Settings
@@ -150,3 +81,4 @@ content:
       - name: body
         label: Body
         type: rich-text
+        components: [image, video, callout, truefalse, interactive_check, interactive_progress]
