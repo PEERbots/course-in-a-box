@@ -30,6 +30,9 @@ content:
         label: Courses
         type: object
         list: true
+        collapsible:
+          collapsed: true
+          summary: "({index}) - {title}"
         fields:
         - name: id
           label: ID
@@ -53,6 +56,9 @@ content:
           label: Modules
           type: object
           list: true
+          collapsible:
+            collapsed: true
+            summary: "({index}) - {title}"
           fields:
             - name: id
               label: Module ID
