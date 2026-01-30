@@ -26,39 +26,43 @@ content:
     path: _data/courses.yml
     format: yaml
     fields:
-      - name: id
-        label: ID
-        type: string
-        required: true
-      - name: title
-        label: Title
-        type: string
-      - name: status
-        label: Status
-        type: select
-        options: 
-          values: ["published", "coming_soon", "draft"]
-      - name: description
-        label: Description
-        type: text
-      - name: image
-        label: Cover Image
-        type: image
-      - name: modules
-        label: Modules
+      - name: courses
+        label: Courses
         type: object
         list: true
         fields:
-          - name: id
-            label: Module ID
-            type: string
-          - name: title
-            label: Title
-            type: string
-          - name: description
-            label: Description
-            type: text
-
+        - name: id
+          label: ID
+          type: string
+          required: true
+        - name: title
+          label: Title
+          type: string
+        - name: status
+          label: Status
+          type: select
+          options: 
+            values: ["published", "coming_soon", "draft"]
+        - name: description
+          label: Description
+          type: text
+        - name: image
+          label: Cover Image
+          type: image
+        - name: modules
+          label: Modules
+          type: object
+          list: true
+          fields:
+            - name: id
+              label: Module ID
+              type: string
+            - name: title
+              label: Title
+              type: string
+            - name: description
+              label: Description
+              type: text
   - name: courses
     label: Courses
     type: collection
@@ -73,7 +77,7 @@ content:
         label: Layout
         type: select
         options: 
-          values: ["module_landing", "course_landing"]
+          values: ["module_landing", "course_landing", "course_page", "page", "base"]
       - name: categories
         label: Categories
         type: string
@@ -81,4 +85,3 @@ content:
       - name: body
         label: Body
         type: rich-text
-        components: [image, video, callout, truefalse, interactive_check, interactive_progress]
