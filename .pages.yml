@@ -19,6 +19,18 @@ content:
         label: Jumbotron Color
         type: string
         note: "Hex color code (e.g. #d8e7eb)"
+      - name: jumbotron_image
+        label: Jumbotron Background Image
+        type: image
+      - name: jumbotron_mask
+        label: Jumbotron Mask
+        type: image
+      - name: jumbotron_icon
+        label: Jumbotron Icon
+        type: image
+      - name: hide_jumbotron_text
+        label: Hide Jumbotron Text
+        type: boolean
 
   - name: course_data
     label: Course Metadata
