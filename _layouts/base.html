@@ -23,7 +23,7 @@
 
   {% assign active_course = nil %}
   {% if course_id %}
-  {% for course in site.data.courses %}
+  {% for course in site.data.courses.courses %}
   {% if course.id == course_id %}
   {% assign active_course = course %}
   {% break %}

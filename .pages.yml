@@ -1,0 +1,105 @@
+media: "img"
+content:
+  - name: settings
+    label: Global Settings
+    type: file
+    path: _config.yml
+    format: yaml
+    fields:
+      - name: title
+        label: Site Title
+        type: string
+      - name: description
+        label: Site Description
+        type: string
+      - name: ga_tracking_code
+        label: Google Analytics ID
+        type: string
+      - name: jumbotron_color
+        label: Jumbotron Color
+        type: string
+        note: "Hex color code (e.g. #d8e7eb)"
+      - name: jumbotron_image
+        label: Jumbotron Background Image
+        type: image
+      - name: jumbotron_mask
+        label: Jumbotron Mask
+        type: image
+      - name: jumbotron_icon
+        label: Jumbotron Icon
+        type: image
+      - name: hide_jumbotron_text
+        label: Hide Jumbotron Text
+        type: boolean
+
+  - name: course_data
+    label: Course Metadata
+    type: file
+    path: _data/courses.yml
+    format: yaml
+    fields:
+      - name: courses
+        label: Courses
+        type: object
+        list: true
+        collapsible:
+          collapsed: true
+          summary: "({index}) - {title}"
+        fields:
+        - name: id
+          label: ID
+          type: string
+          required: true
+        - name: title
+          label: Title
+          type: string
+        - name: status
+          label: Status
+          type: select
+          options: 
+            values: ["published", "coming_soon", "draft"]
+        - name: description
+          label: Description
+          type: text
+        - name: image
+          label: Cover Image
+          type: image
+        - name: modules
+          label: Modules
+          type: object
+          list: true
+          collapsible:
+            collapsed: true
+            summary: "({index}) - {title}"
+          fields:
+            - name: id
+              label: Module ID
+              type: string
+            - name: title
+              label: Title
+              type: string
+            - name: description
+              label: Description
+              type: text
+  - name: courses
+    label: Courses
+    type: collection
+    path: courses
+    subfolders: true
+    filename: "index.md"
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: layout
+        label: Layout
+        type: select
+        options: 
+          values: ["module_landing", "course_landing", "course_page", "page", "base"]
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: body
+        label: Body
+        type: rich-text

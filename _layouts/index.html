@@ -33,7 +33,7 @@ layout: base
 		</div>
 	</div>
 	<div class="row">
-		{% for course in site.data.courses %}
+		{% for course in site.data.courses.courses %}
 		{% if course.status == "draft" %}{% continue %}{% endif %}
 		<div class="col-md-6 mb-4">
 			<div
