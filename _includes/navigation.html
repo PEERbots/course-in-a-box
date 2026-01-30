@@ -17,7 +17,7 @@
       {% endif %}
 
       {% assign active_course = null %}
-      {% for course in site.data.courses %}
+      {% for course in site.data.courses.courses %}
       {% if course.id == course_id %}
       {% assign active_course = course %}
       {% endif %}
@@ -41,7 +41,7 @@
       {% endfor %}
       {% endif %}
       {% else %}
-      {% for course in site.data.courses %}
+      {% for course in site.data.courses.courses %}
       {% if course.status == "published" %}
       <li class="nav-item py-2">
         {% capture first_module_id %}{{ course.modules[0].id }}{% endcapture %}

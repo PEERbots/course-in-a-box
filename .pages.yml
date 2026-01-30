@@ -1,0 +1,148 @@
+media: "img"
+
+components:
+  image:
+    label: Image
+    fields:
+      - name: src
+        label: Image
+        type: image
+      - name: alt
+        label: Alt Text
+        type: string
+      - name: caption
+        label: Caption
+        type: string
+
+  video:
+    label: Video Embed
+    fields:
+      - name: url
+        label: Video URL (YouTube/Vimeo)
+        type: string
+      - name: title
+        label: Title
+        type: string
+
+  callout:
+    label: Callout Box
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: text
+        label: Text
+        type: text
+      - name: type
+        label: Type
+        type: select
+        options: [info, warning, success, danger]
+        default: info
+
+  truefalse:
+    label: True/False Question
+    fields:
+      - name: id
+        label: Unique ID
+        type: string
+        required: true
+      - name: statement
+        label: Statement
+        type: string
+      - name: true_response
+        label: Response if True
+        type: string
+      - name: false_response
+        label: Response if False
+        type: string
+
+  interactive_check:
+    label: Interactive Checkbox
+    fields:
+      - name: statement
+        label: Task Statement
+        type: string
+
+  interactive_progress:
+    label: Interactive Progress Tracker
+    fields: [] # No fields needed
+
+content:
+  - name: settings
+    label: Global Settings
+    type: file
+    path: _config.yml
+    format: yaml
+    fields:
+      - name: title
+        label: Site Title
+        type: string
+      - name: description
+        label: Site Description
+        type: string
+      - name: ga_tracking_code
+        label: Google Analytics ID
+        type: string
+      - name: jumbotron_color
+        label: Jumbotron Color
+        type: string
+        note: "Hex color code (e.g. #d8e7eb)"
+
+  - name: course_data
+    label: Course Metadata
+    type: file
+    path: _data/courses.yml
+    format: yaml
+    fields:
+      - name: id
+        label: ID
+        type: string
+        required: true
+      - name: title
+        label: Title
+        type: string
+      - name: status
+        label: Status
+        type: select
+        options: [published, coming_soon, draft]
+      - name: description
+        label: Description
+        type: text
+      - name: image
+        label: Cover Image
+        type: image
+      - name: modules
+        label: Modules
+        type: list
+        fields:
+          - name: id
+            label: Module ID
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: description
+            label: Description
+            type: text
+
+  - name: courses
+    label: Courses
+    type: collection
+    path: courses
+    subfolders: true
+    filename: "index.md"
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: layout
+        label: Layout
+        type: select
+        options: [module_landing, course_landing]
+      - name: categories
+        label: Categories
+        type: list
+      - name: body
+        label: Body
+        type: rich-text
+        components: [image, video, callout, truefalse, interactive_check, interactive_progress]

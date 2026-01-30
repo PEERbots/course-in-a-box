@@ -6,7 +6,7 @@ layout: base
 {% assign module_id = path_parts[3] %}
 
 {% assign active_course = null %}
-{% for course in site.data.courses %}
+{% for course in site.data.courses.courses %}
 {% if course.id == course_id %}
 {% assign active_course = course %}
 {% endif %}
