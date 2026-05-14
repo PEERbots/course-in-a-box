@@ -1,0 +1,49 @@
+<div class="pricing-grid row justify-content-center my-5">
+  {% for plan in include.plans %}
+  <div class="col-lg-4 col-md-6 mb-4">
+    <div class="pricing-card card h-100 {% if plan.highlight %}highlighted{% endif %} shadow-sm">
+      <div class="card-body d-flex flex-column p-4">
+        {% if plan.highlight %}
+        <div class="popular-tag text-uppercase">{{ plan.highlight_text | default: 'Most Popular' }}</div>
+        {% endif %}
+        
+        <div class="text-center mb-4">
+          <h3 class="card-title h4 font-weight-bold mb-3">{{ plan.title }}</h3>
+          <div class="price-display">
+            {% assign price_numeric = plan.price | plus: 0 %}
+            {% if price_numeric > 0 or plan.price == '0' or plan.price == 0 %}
+              <span class="h4 align-top mt-2">$</span>
+              <span class="h1 font-weight-bold">{{ plan.price }}</span>
+              {% if plan.subtitle %}
+                <span class="text-muted">{{ plan.subtitle }}</span>
+              {% endif %}
+            {% else %}
+              <span class="h1 font-weight-bold">{{ plan.price }}</span>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if plan.description %}
+        <p class="card-text description text-center text-muted mb-4">{{ plan.description }}</p>
+        {% endif %}
+
+        <ul class="list-unstyled features-list mb-4">
+          {% for feature in plan.features %}
+          <li class="mb-2 d-flex align-items-start">
+            <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+            <span>{{ feature }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <div class="mt-auto pt-2">
+          <a href="{{ plan.button_url | default: '#' }}" 
+             class="btn {% if plan.highlight %}btn-primary{% else %}btn-outline-primary{% endif %} btn-block btn-lg py-3 font-weight-bold transition-all">
+            {{ plan.button_text | default: 'Get Started' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
