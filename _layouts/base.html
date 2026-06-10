@@ -16,6 +16,10 @@
 
   {% if page.layout == 'course_landing' %}
   {% assign course_id = page.url | split: '/' | slice: 2 | first %}
+  {% elsif page.layout == 'module_landing' %}
+  {% assign path_parts = page.url | split: '/' %}
+  {% assign course_id = path_parts[2] %}
+  {% assign module_id = path_parts[3] %}
   {% elsif page.layout == 'course_page' %}
   {% assign course_id = page.categories[1] %}
   {% assign module_id = page.categories[2] %}

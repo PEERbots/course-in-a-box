@@ -445,3 +445,91 @@ footer {
 .transition-all {
   transition: all 0.2s ease-in-out;
 }
+
+// Acknowledgements Section
+.acknowledgements-section {
+  background: linear-gradient(180deg, transparent, rgba($peerbots-blue, 0.02));
+  border-top: 1px solid rgba($peerbots-blue, 0.08);
+  padding: 2.5rem 0;
+  
+  .acknowledgements-container {
+    background: white;
+    border: 1px solid rgba($peerbots-blue, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $peerbots-blue, $peerbots-teal);
+    }
+  }
+
+  .acknowledgements-title {
+    color: darken($peerbots-blue, 10%);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    
+    i {
+      color: $peerbots-red;
+      animation: heartbeat 1.5s infinite;
+    }
+  }
+
+  .acknowledgement-item {
+    transition: background-color 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    
+    &:hover {
+      background-color: rgba($peerbots-blue, 0.03);
+    }
+  }
+
+  .ack-link {
+    color: $peerbots-blue;
+    text-decoration: none;
+    border-bottom: 1px dotted $peerbots-blue;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: darken($peerbots-blue, 15%);
+      border-bottom: 1px solid darken($peerbots-blue, 15%);
+      text-decoration: none;
+    }
+  }
+  
+  .border-bottom-dashed {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  }
+
+  .toggle-acks-btn {
+    border: 1px solid $peerbots-blue;
+    color: $peerbots-blue;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background: transparent;
+    transition: all 0.2s ease;
+    
+    &:hover, &:focus, &.active {
+      background-color: $peerbots-blue;
+      color: white;
+      box-shadow: 0 4px 10px rgba($peerbots-blue, 0.2);
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}

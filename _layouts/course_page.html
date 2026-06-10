@@ -20,6 +20,7 @@ layout: base
 		<div class="col-xl-6 col-md-9 bg-white">
 			<div class="content p-md-2">
 				{{ content }}
+				{% include acknowledgements.html %}
 				{% if prev or next %}
 				<hr />{% endif %}
 				<div class="row">
