@@ -533,3 +533,296 @@ footer {
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
+
+/* Custom elegant styling for Kramdown footnotes / references list */
+.footnotes {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  font-size: 0.88rem;
+  color: #666;
+
+  &::before {
+    content: "References";
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2b303a;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  ol {
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+    
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+      color: #555;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      p {
+        margin-bottom: 0;
+        display: inline;
+      }
+    }
+  }
+
+  .reversefootnote {
+    font-size: 0.75rem;
+    margin-left: 0.35rem;
+    color: #007bff; /* default link blue fallback if $peerbots-blue is scoped */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateX(-2px);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Custom styling for definitions list */
+.definitions-container {
+  overflow: hidden;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  
+  .definitions-header {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  .definition-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+
+  .definition-trigger {
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.015) !important;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .definition-term {
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .definition-icon {
+    transition: transform 0.25s ease;
+    color: #888;
+  }
+
+  .definition-trigger[aria-expanded="true"] {
+    background-color: rgba(0, 123, 255, 0.02) !important;
+    
+    .definition-icon {
+      transform: rotate(180deg);
+      color: #007bff;
+    }
+  }
+
+  .definition-content-wrapper {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  .definition-content {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-left: 3px solid #007bff;
+    margin: 0.25rem 1.5rem 1rem 1.5rem;
+    padding-left: 1rem !important;
+    
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Custom elegant styling for Interactive Textbox includes */
+.interactive-textbox-card {
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid $peerbots-blue !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .interactive-textarea {
+    &:focus {
+      border-color: $peerbots-blue !important;
+      box-shadow: 0 0 0 0.2rem rgba($peerbots-blue, 0.15) !important;
+      outline: none;
+    }
+  }
+
+  .btn-group {
+    .btn {
+      border-radius: 6px;
+      transition: all 0.15s ease-in-out;
+      
+      &.btn-outline-secondary {
+        color: $gray-darker;
+        border-color: #d8e7eb;
+        
+        &:hover {
+          background-color: rgba($peerbots-blue, 0.05);
+          color: $peerbots-blue;
+          border-color: $peerbots-blue;
+        }
+      }
+      
+      &.btn-outline-danger {
+        border-color: #d8e7eb;
+        color: $gray-dark;
+        
+        &:hover {
+          background-color: rgba($peerbots-red, 0.1);
+          color: darken($peerbots-red, 10%);
+          border-color: $peerbots-red;
+        }
+      }
+    }
+  }
+}
+
+/* Condensed view for facilitators */
+body.role-facilitator {
+  .interactive-textbox-card {
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    box-shadow: none !important;
+    border-left: 4px solid $peerbots-teal !important; /* switch to teal accent in facilitator mode */
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border-left-width: 4px !important;
+    background-color: #f8f9fa !important;
+    transform: none !important;
+
+    .card-body {
+      padding: 0.75rem 1.25rem !important;
+    }
+
+    /* Hide the textarea, button toolbar, counter section, status indication, and help text */
+    textarea,
+    .form-text,
+    .position-relative,
+    .d-flex.justify-content-between.align-items-center.mt-3,
+    .save-status-indicator {
+      display: none !important;
+    }
+
+    label {
+      margin-bottom: 0 !important;
+      font-size: 0.95rem !important;
+      font-weight: 500 !important;
+      display: inline-block !important;
+      
+      span {
+        color: $gray-dark;
+      }
+    }
+  }
+
+  .interactive-section {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    padding: 0.5rem 1rem !important;
+    background-color: #f8f9fa !important;
+    border-left: 3px solid $peerbots-teal !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+
+    p,
+    input,
+    .interactive-checkbox {
+      display: none !important;
+    }
+
+    span {
+      font-size: 0.95rem !important;
+      color: $gray-dark !important;
+      display: inline-block !important;
+    }
+  }
+
+  .facilitator-only-block {
+    display: block !important;
+  }
+}
+
+/* Default state (hidden for learners) */
+.facilitator-only-block {
+  display: none !important;
+}
+
+.facilitator-only-content {
+  color: #111111 !important; /* Force a highly legible, dark color for all nested elements */
+
+  p, li, ul, ol, span, strong, em, b, i {
+    color: #111111 !important;
+  }
+}
+
+/* Print Stylesheet Overrides */
+.print-only {
+  display: none;
+}
+
+@media print {
+  /* Hide standard page elements when printing */
+  nav,
+  .sidebar,
+  footer,
+  .pagination-section,
+  hr,
+  .no-print,
+  .content > *:not(#print-only-summary) {
+    display: none !important;
+  }
+
+  /* Reveal the print-only container */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Expand content to full paper width and remove margins */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .col-xl-6, 
+  .col-md-9, 
+  .container-fluid, 
+  .row, 
+  .col-lg-8, 
+  .offset-lg-2,
+  .content {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}

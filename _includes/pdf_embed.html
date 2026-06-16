@@ -1,0 +1,46 @@
+<div class="pdf-embed-wrapper card shadow-sm border-0 my-4 bg-light">
+    <!-- Header with document metadata and action links -->
+    <div class="card-header bg-white border-bottom-0 d-flex flex-wrap align-items-center justify-content-between py-3 px-4">
+        <div class="d-flex align-items-center mb-2 mb-md-0">
+            <span class="pdf-icon mr-3" style="font-size: 1.5rem; color: #dc3545;" aria-hidden="true">
+                <i class="fa fa-file-pdf-o"></i>
+            </span>
+            <div>
+                <h5 class="mb-0 text-dark font-weight-normal">{{ include.title | default: "Document Preview" }}</h5>
+                <span class="text-muted small">PDF Document</span>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            {% if include.path %}
+            <a href="{{ include.path | prepend: site.baseurl }}" download class="btn btn-primary btn-sm text-white px-3 mr-2">
+                <i class="fa fa-download mr-1"></i> Download
+            </a>
+            <a href="{{ include.path | prepend: site.baseurl }}" target="_blank" class="btn btn-outline-secondary btn-sm px-3">
+                <i class="fa fa-external-link mr-1"></i> Open & Print
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if include.path %}
+    <!-- Desktop Native Preview Frame -->
+    <div class="card-body p-0 d-none d-md-block border-top">
+        <iframe 
+            src="{{ include.path | prepend: site.baseurl }}" 
+            width="100%" 
+            height="{{ include.height | default: '600px' }}" 
+            style="border: none; display: block; background-color: #525659;"
+            title="{{ include.title | default: 'PDF Document Preview' }}">
+            <p>Your browser does not support PDF previews. Please <a href="{{ include.path | prepend: site.baseurl }}">download the PDF</a> to view it.</p>
+        </iframe>
+    </div>
+
+    <!-- Mobile-Friendly Fallback -->
+    <div class="card-body p-4 d-md-none text-center bg-white border-top">
+        <p class="mb-3 text-muted">To view or fill out this PDF on mobile devices, please download it directly.</p>
+        <a href="{{ include.path | prepend: site.baseurl }}" download class="btn btn-primary btn-block text-white">
+            <i class="fa fa-download mr-1"></i> Download PDF
+        </a>
+    </div>
+    {% endif %}
+</div>

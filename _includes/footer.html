@@ -1,8 +1,58 @@
 <footer class="mt-auto">
   <div class="container-fluid">
-  <p>Built using <a href="https://course-in-a-box.p2pu.org">Course in a Box</a>, a project of <a href="https://www.p2pu.org">P2PU</a>.</p>
+    <p>Built using <a href="https://course-in-a-box.p2pu.org">Course in a Box</a>, a project of <a
+        href="https://www.p2pu.org">P2PU</a>.</p>
+    <p>Unless otherwise noted, all the materials on this site are licensed under a <a target="_blank"
+        href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 license</a>.</p>
 
-  <p>Unless otherwise noted, all the materials on this site are licensed under a <a target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 license</a>.</p>
+    {% if page.layout == 'course_page' or page.layout == 'module_landing' %}
+    <div class="mt-3 text-center border-top pt-3" style="border-color: rgba(255, 255, 255, 0.15) !important;">
+      <span class="text-muted mr-2 small" style="letter-spacing: 0.05em; text-transform: uppercase;">View Role:</span>
+      <div class="btn-group btn-group-sm" role="group" aria-label="User role selector">
+        <button type="button" class="btn btn-outline-light py-1 px-3" id="roleBtnLearner"
+          style="font-size: 0.75rem; font-weight: 500; border-color: rgba(255,255,255,0.2);">
+          <i class="fa fa-graduation-cap mr-1"></i> Learner
+        </button>
+        <button type="button" class="btn btn-outline-light py-1 px-3" id="roleBtnFacilitator"
+          style="font-size: 0.75rem; font-weight: 500; border-color: rgba(255,255,255,0.2);">
+          <i class="fa fa-user mr-1"></i> Facilitator
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const btnLearner = document.getElementById('roleBtnLearner');
+        const btnFacilitator = document.getElementById('roleBtnFacilitator');
+        if (!btnLearner || !btnFacilitator) return;
+
+        function updateButtons(isFacilitator) {
+          if (isFacilitator) {
+            btnFacilitator.classList.add('active');
+            btnLearner.classList.remove('active');
+          } else {
+            btnLearner.classList.add('active');
+            btnFacilitator.classList.remove('active');
+          }
+        }
+
+        // Initialize state from body class
+        const isFacilitator = document.body.classList.contains('role-facilitator');
+        updateButtons(isFacilitator);
+
+        btnLearner.addEventListener('click', function () {
+          document.body.classList.remove('role-facilitator');
+          updateButtons(false);
+          sessionStorage.setItem('user-role', 'learner');
+        });
+
+        btnFacilitator.addEventListener('click', function () {
+          document.body.classList.add('role-facilitator');
+          updateButtons(true);
+          sessionStorage.setItem('user-role', 'facilitator');
+        });
+      });
+    </script>
+    {% endif %}
   </div>
 </footer>
-

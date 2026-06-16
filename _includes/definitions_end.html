@@ -1,0 +1,57 @@
+    </div> <!-- Close definitions-list -->
+</div> <!-- Close definitions-container -->
+
+<script>
+(function() {
+    const containerId = '{{ page_def_container_id }}';
+    
+    const initDefinitions = function() {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        const items = container.querySelectorAll('.definition-item');
+        const expandAllBtn = container.querySelector('.expand-all-btn');
+        const collapseAllBtn = container.querySelector('.collapse-all-btn');
+
+        items.forEach(function(item) {
+            const trigger = item.querySelector('.definition-trigger');
+            const content = item.querySelector('.definition-content-wrapper');
+
+            trigger.addEventListener('click', function() {
+                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    trigger.setAttribute('aria-expanded', 'false');
+                    content.style.max-height = '0';
+                } else {
+                    trigger.setAttribute('aria-expanded', 'true');
+                    content.style.max-height = content.scrollHeight + 'px';
+                }
+            });
+        });
+
+        expandAllBtn.addEventListener('click', function() {
+            items.forEach(function(item) {
+                const trigger = item.querySelector('.definition-trigger');
+                const content = item.querySelector('.definition-content-wrapper');
+                trigger.setAttribute('aria-expanded', 'true');
+                content.style.max-height = content.scrollHeight + 'px';
+            });
+        });
+
+        collapseAllBtn.addEventListener('click', function() {
+            items.forEach(function(item) {
+                const trigger = item.querySelector('.definition-trigger');
+                const content = item.querySelector('.definition-content-wrapper');
+                trigger.setAttribute('aria-expanded', 'false');
+                content.style.max-height = '0';
+            });
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDefinitions);
+    } else {
+        initDefinitions();
+    }
+})();
+</script>

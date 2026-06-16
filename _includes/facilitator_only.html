@@ -1,0 +1,9 @@
+<div class="facilitator-only-block card border-0 shadow-sm my-3 p-3" style="background-color: rgba(95, 199, 204, 0.08); border-left: 4px solid #5fc7cc !important; border-radius: 12px;">
+    <div class="d-flex align-items-center mb-2">
+        <span class="text-primary mr-2" style="font-size: 1.1rem;"><i class="fa fa-graduation-cap"></i></span>
+        <strong class="text-primary small" style="letter-spacing: 0.05em; text-transform: uppercase;">Facilitator Note</strong>
+    </div>
+    <div class="facilitator-only-content text-dark" style="line-height: 1.6; font-size: 0.95rem;">
+        {{ include.text | default: include.content | markdownify }}
+    </div>
+</div>

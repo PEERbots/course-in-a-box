@@ -6,6 +6,17 @@ title: Walkthrough
 
 This module walks you through how the course is structured, the methodology we use, and what you'll need to get started.
 
+## Before We Begin
+
+{% include facilitator_only.html text="
+As a facilitator, please [complete this form](https://forms.gle/ewDECYN1aeLtwEnNA) to let us know you are running the course. You can also use this form to ask questions or share any feedback you may have. 
+One of your to-dos will be to [copy the form](https://forms.gle/32bosPH3WvbjwmU1A/copy), customize it, and share it with your participants at the beginning and end of the course.
+" %}
+
+Before we begin, it would be helpful to us if you [fill out this survey](https://forms.gle/32bosPH3WvbjwmU1A). If you are in a facilitated cohort, please request the correct link from your facilitator. Once you are done with the course, please come back and fill this survey again. 
+
+<a href="https://forms.gle/32bosPH3WvbjwmU1A" class="btn btn-primary">Fill out this survey</a>
+
 ## Course Content 
 
 The Introduction to Social Robotics program is a brief introduction to the design and development of social robots. The program covers:

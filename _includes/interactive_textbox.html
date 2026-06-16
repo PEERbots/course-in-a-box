@@ -1,0 +1,161 @@
+<div class="interactive-textbox-card card shadow-sm my-4 border-0 rounded-lg" style="border: 1px solid rgba(81, 110, 181, 0.15) !important; border-radius: 12px !important; overflow: hidden;">
+    <div class="card-body p-4">
+        {% if include.label %}
+        <label for="textbox-{{ include.id }}" class="font-weight-bold text-dark mb-2 d-flex justify-content-between align-items-center">
+            <span style="font-size: 1.05rem;">{{ include.label }}</span>
+            <span class="save-status-indicator small text-muted font-weight-normal" id="status-{{ include.id }}" style="opacity: 0; transition: opacity 0.3s ease;">
+                <i class="fa fa-check-circle text-success mr-1"></i> Saved
+            </span>
+        </label>
+        {% endif %}
+        
+        {% if include.help_text %}
+        <small class="form-text text-muted mb-3 mt-0">{{ include.help_text }}</small>
+        {% endif %}
+
+        <div class="position-relative">
+            <textarea 
+                id="textbox-{{ include.id }}" 
+                class="form-control border-light-grey text-dark py-3 px-3 interactive-textarea" 
+                rows="{{ include.rows | default: 4 }}"
+                placeholder="{{ include.placeholder | default: 'Type your answer here...' }}"
+                {% if include.maxlength %}maxlength="{{ include.maxlength }}"{% endif %}
+                style="resize: vertical; border-radius: 8px; border: 1.5px solid #d8e7eb; transition: border-color 0.2s ease, box-shadow 0.2s ease;"
+            ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="text-muted small">
+                <span id="word-count-{{ include.id }}">0</span> words
+                {% if include.maxlength %}
+                <span class="mx-1">|</span> <span id="char-count-{{ include.id }}">0</span> / {{ include.maxlength }} chars
+                {% else %}
+                <span class="mx-1">|</span> <span id="char-count-{{ include.id }}">0</span> chars
+                {% endif %}
+            </div>
+            
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-secondary px-3" id="copy-btn-{{ include.id }}" title="Copy to clipboard">
+                    <i class="fa fa-copy mr-1"></i> Copy
+                </button>
+                <button type="button" class="btn btn-outline-danger px-3" id="clear-btn-{{ include.id }}" title="Clear response">
+                    <i class="fa fa-trash-o mr-1"></i> Clear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const textarea = document.getElementById('textbox-{{ include.id }}');
+    const wordCount = document.getElementById('word-count-{{ include.id }}');
+    const charCount = document.getElementById('char-count-{{ include.id }}');
+    const status = document.getElementById('status-{{ include.id }}');
+    const copyBtn = document.getElementById('copy-btn-{{ include.id }}');
+    const clearBtn = document.getElementById('clear-btn-{{ include.id }}');
+
+    const storageKey = window.location.pathname + '-textbox-{{ include.id }}';
+
+    // Save question label metadata for export summaries
+    {% if include.label %}
+    localStorage.setItem(storageKey + '-label', '{{ include.label | escape }}');
+    {% endif %}
+
+    // Track initialization order of textboxes on the page
+    if (typeof window.textboxInitializationCounter === 'undefined') {
+        window.textboxInitializationCounter = 0;
+    }
+    window.textboxInitializationCounter++;
+    localStorage.setItem(storageKey + '-order', window.textboxInitializationCounter.toString());
+
+    // Load saved value
+    const savedValue = localStorage.getItem(storageKey);
+    if (savedValue !== null) {
+        textarea.value = savedValue;
+        updateCounts();
+    }
+
+    // Debounce save helper
+    let saveTimeout;
+    function triggerSave() {
+        localStorage.setItem(storageKey, textarea.value);
+        showSavedIndicator();
+    }
+
+    function showSavedIndicator() {
+        if (status) {
+            status.style.opacity = '1';
+            setTimeout(() => {
+                status.style.opacity = '0';
+            }, 1500);
+        }
+    }
+
+    function updateCounts() {
+        const text = textarea.value.trim();
+        const words = text === '' ? 0 : text.split(/\s+/).length;
+        wordCount.textContent = words;
+        charCount.textContent = textarea.value.length;
+    }
+
+    // Event listeners
+    textarea.addEventListener('input', function() {
+        updateCounts();
+        
+        // Auto-save on typing with debounce
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(triggerSave, 600);
+    });
+
+    textarea.addEventListener('blur', function() {
+        triggerSave();
+    });
+
+    // Copy Response
+    copyBtn.addEventListener('click', function() {
+        if (!textarea.value.trim()) {
+            const originalHTML = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fa fa-exclamation-triangle mr-1"></i> Empty!';
+            copyBtn.classList.replace('btn-outline-secondary', 'btn-outline-warning');
+            setTimeout(() => {
+                copyBtn.innerHTML = originalHTML;
+                copyBtn.classList.replace('btn-outline-warning', 'btn-outline-secondary');
+            }, 1500);
+            return;
+        }
+
+        navigator.clipboard.writeText(textarea.value).then(() => {
+            const originalHTML = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fa fa-check mr-1"></i> Copied!';
+            copyBtn.classList.replace('btn-outline-secondary', 'btn-success');
+            copyBtn.classList.add('text-white');
+            setTimeout(() => {
+                copyBtn.innerHTML = originalHTML;
+                copyBtn.classList.replace('btn-success', 'btn-outline-secondary');
+                copyBtn.classList.remove('text-white');
+            }, 1500);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    });
+
+    // Clear Response
+    clearBtn.addEventListener('click', function() {
+        if (!textarea.value.trim()) return;
+        
+        if (confirm('Are you sure you want to clear your response? This cannot be undone.')) {
+            textarea.value = '';
+            localStorage.removeItem(storageKey);
+            updateCounts();
+            
+            // Temporary clear indicator feedback
+            const originalHTML = clearBtn.innerHTML;
+            clearBtn.innerHTML = '<i class="fa fa-check mr-1"></i> Cleared';
+            setTimeout(() => {
+                clearBtn.innerHTML = originalHTML;
+            }, 1500);
+        }
+    });
+})();
+</script>
