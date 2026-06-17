@@ -21,24 +21,44 @@ body {
 }
 
 .navbar {
+  font-family: $font-family-sans-serif !important;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 
   a,
   .nav-link,
   button {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus,
+  a:hover {
+    color: white !important;
+    text-decoration: none;
   }
 }
 
-.nav-item.active,
 .nav-item:hover {
-  background-color: #707782;
-  transition: all 0.3s linear;
+  background-color: #4b525d;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.nav-item.active {
+  background-color: $peerbots-blue !important;
+  
+  .nav-link {
+    color: white !important;
+    font-weight: 600;
+  }
 }
 
 .nav-link {
-  padding-left: 1em !important;
-  padding-right: 1em !important;
+  padding-left: 1.25em !important;
+  padding-right: 1.25em !important;
 }
 
 .jumbotron {
