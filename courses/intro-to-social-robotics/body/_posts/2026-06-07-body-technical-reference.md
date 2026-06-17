@@ -4,7 +4,7 @@ title: Robot Body Design Technical Reference Materials
 
 # Robot Body Design Technical Reference Materials
 
-In this module, we'll go over an example of the workflow necessary to design a robot from scratch. This page includes all the backghround information you should know. If you like diving into the technical information, you can read it first, but otherwise, you can think of it as a reference.
+In this module, we'll go over an example of the workflow necessary to design a robot from scratch. This page includes all the background information you should know. If you like diving into the technical information, you can read it first, but otherwise, you can think of it as a reference.
 
 ## Goals
 

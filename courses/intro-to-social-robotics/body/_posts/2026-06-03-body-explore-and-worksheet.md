@@ -28,5 +28,5 @@ Next, start working on your physical build, try to keep it consistent with your 
 3. Robot mobility systems
 
 
-{% include interactive_check.html statement="I have buiilt a robot body based on my sketch " %}
+{% include interactive_check.html statement="I have built a robot body based on my sketch " %}
 {% include interactive_check.html statement="I have taken a photo or asked a facilitator to record this build in some way. " %}

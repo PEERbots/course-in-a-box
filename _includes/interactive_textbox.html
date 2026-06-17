@@ -125,19 +125,41 @@
             return;
         }
 
-        navigator.clipboard.writeText(textarea.value).then(() => {
-            const originalHTML = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fa fa-check mr-1"></i> Copied!';
-            copyBtn.classList.replace('btn-outline-secondary', 'btn-success');
-            copyBtn.classList.add('text-white');
-            setTimeout(() => {
-                copyBtn.innerHTML = originalHTML;
-                copyBtn.classList.replace('btn-success', 'btn-outline-secondary');
-                copyBtn.classList.remove('text-white');
-            }, 1500);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                const originalHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fa fa-check mr-1"></i> Copied!';
+                copyBtn.classList.replace('btn-outline-secondary', 'btn-success');
+                copyBtn.classList.add('text-white');
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHTML;
+                    copyBtn.classList.replace('btn-success', 'btn-outline-secondary');
+                    copyBtn.classList.remove('text-white');
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        } else {
+            const textareaFallback = document.createElement('textarea');
+            textareaFallback.value = textarea.value;
+            document.body.appendChild(textareaFallback);
+            textareaFallback.select();
+            try {
+                document.execCommand('copy');
+                const originalHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fa fa-check mr-1"></i> Copied!';
+                copyBtn.classList.replace('btn-outline-secondary', 'btn-success');
+                copyBtn.classList.add('text-white');
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHTML;
+                    copyBtn.classList.replace('btn-success', 'btn-outline-secondary');
+                    copyBtn.classList.remove('text-white');
+                }, 1500);
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+            }
+            document.body.removeChild(textareaFallback);
+        }
     });
 
     // Clear Response

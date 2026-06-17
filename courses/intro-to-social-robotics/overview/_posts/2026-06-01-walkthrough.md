@@ -30,11 +30,11 @@ Participants get to build their very own low-tech social robot prototype and dem
 
 ## Methodology 
 
-The course relies on a peer-learning methodology pioneered at [Peer 2 Peer University](p2pu.org) which emphasizes contributions from learners as equals. The program facilitator provides facilitation and organization but the learning comes from the partizipants' engagement with the topic and bringing their own unique perspectives.
+The course relies on a peer-learning methodology pioneered at [Peer 2 Peer University](p2pu.org) which emphasizes contributions from learners as equals. The program facilitator provides facilitation and organization but the learning comes from the participants' engagement with the topic and bringing their own unique perspectives.
 
 ## Evaluation
 
-The curriculum has clear experiential goals and outcomes, and surveys to assess and provide feedback on the engagement both from the facilitator's perspecitve and the participants.
+The curriculum has clear experiential goals and outcomes, and surveys to assess and provide feedback on the engagement both from the facilitator's perspective and the participants.
 
 
 

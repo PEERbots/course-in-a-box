@@ -58,17 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const expandBtn = container.querySelector('.expand-all-btn');
     const collapseBtn = container.querySelector('.collapse-all-btn');
 
-    if (expandBtn) {
+    if (expandBtn && typeof window.jQuery !== 'undefined') {
         expandBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            $('#' + containerId + ' .definition-content-wrapper').collapse('show');
+            window.jQuery('#' + containerId + ' .definition-content-wrapper').collapse('show');
         });
     }
 
-    if (collapseBtn) {
+    if (collapseBtn && typeof window.jQuery !== 'undefined') {
         collapseBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            $('#' + containerId + ' .definition-content-wrapper').collapse('hide');
+            window.jQuery('#' + containerId + ' .definition-content-wrapper').collapse('hide');
         });
     }
 });
