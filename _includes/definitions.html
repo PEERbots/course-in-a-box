@@ -1,0 +1,76 @@
+{% assign defs = include.definitions | default: page.definitions %}
+
+{% if defs.size > 0 %}
+{% capture container_id %}def-container-{{ page.url | slugify }}{% endcapture %}
+
+<div class="definitions-container card shadow-sm border my-4" id="{{ container_id }}">
+    <!-- Header Controls -->
+    <div class="definitions-header bg-light d-flex justify-content-between align-items-center py-3 px-4 border-bottom">
+        <div class="d-flex align-items-center">
+            <span class="mr-2 text-primary" style="font-size: 1.2rem;" aria-hidden="true">
+                <i class="fa fa-book"></i>
+            </span>
+            <h5 class="mb-0 font-weight-normal text-dark">{{ include.title | default: "Key Definitions" }}</h5>
+        </div>
+        <div class="definitions-controls btn-group btn-group-sm">
+            <button class="btn btn-outline-primary expand-all-btn" type="button">
+                <i class="fa fa-expand mr-1"></i> Show All
+            </button>
+            <button class="btn btn-outline-secondary collapse-all-btn" type="button">
+                <i class="fa fa-compress mr-1"></i> Hide All
+            </button>
+        </div>
+    </div>
+
+    <!-- Definitions List -->
+    <div class="definitions-list bg-white">
+        {% for def in defs %}
+        {% assign def_slug = def.term | slugify %}
+        {% capture def_id %}def-item-{{ page.url | slugify }}-{{ def_slug }}{% endcapture %}
+        <div class="definition-item border-bottom">
+            <button class="definition-trigger d-flex justify-content-between align-items-center w-100 py-3 px-4 text-left border-0 bg-transparent" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#{{ def_id }}" 
+                    aria-expanded="false" 
+                    aria-controls="{{ def_id }}">
+                <span class="definition-term font-weight-bold text-dark">{{ def.term }}</span>
+                <span class="definition-icon text-muted small">
+                    <i class="fa fa-chevron-down"></i>
+                </span>
+            </button>
+            <div id="{{ def_id }}" class="collapse definition-content-wrapper">
+                <div class="definition-content px-4 pb-3 text-muted">
+                    {{ def.definition | markdownify }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const containerId = '{{ container_id }}';
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const expandBtn = container.querySelector('.expand-all-btn');
+    const collapseBtn = container.querySelector('.collapse-all-btn');
+
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('show');
+        });
+    }
+
+    if (collapseBtn) {
+        collapseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('hide');
+        });
+    }
+});
+</script>
+{% endif %}

@@ -1,0 +1,132 @@
+{% assign acks = nil %}
+{% assign acks_string = nil %}
+
+{% if page.acknowledgements %}
+{% assign first_item = page.acknowledgements.first %}
+{% if first_item == nil %}
+{% assign acks_string = page.acknowledgements %}
+{% else %}
+{% assign acks = page.acknowledgements %}
+{% endif %}
+{% endif %}
+
+{% if acks_string == nil %}
+{% if page.layout == 'course_landing' and active_course.landing_acknowledgements %}
+{% if acks %}
+{% assign acks = acks | concat: active_course.landing_acknowledgements %}
+{% else %}
+{% assign acks = active_course.landing_acknowledgements %}
+{% endif %}
+{% endif %}
+
+{% if active_course.course_wide_acknowledgements %}
+{% if acks %}
+{% assign acks = acks | concat: active_course.course_wide_acknowledgements %}
+{% else %}
+{% assign acks = active_course.course_wide_acknowledgements %}
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% if acks or acks_string %}
+<section id="acknowledgements-section" class="acknowledgements-section py-4 my-4">
+  <div class="container-fluid px-0">
+    <div class="row no-gutters justify-content-center">
+      <div class="col-12">
+        <div class="acknowledgements-container p-4 rounded shadow-sm">
+          <h4 class="h5 mb-3 acknowledgements-title">
+            <i class="fa fa-heart mr-2 text-danger"></i> Acknowledgements
+          </h4>
+          <p>We would like to thank:</p>
+
+          {% if acks_string %}
+          <div class="acknowledgement-item">
+            <p class="mb-0 text-muted acknowledgements-text font-italic">{{ acks_string }}</p>
+          </div>
+          {% else %}
+          {% if acks.size > 3 %}
+          <div class="acknowledgements-list">
+            {% for ack in acks limit:3 %}
+            <div class="acknowledgement-item mb-3 pb-3 border-bottom-dashed">
+              <h5 class="h6 mb-1">
+                {% if ack.link %}
+                <a href="{{ ack.link }}" target="_blank" rel="noopener" class="ack-link font-weight-bold">{{ ack.name
+                  }}</a>
+                {% else %}
+                <span class="font-weight-bold text-dark">{{ ack.name }}</span>
+                {% endif %}
+              </h5>
+              {% if ack.message %}
+              <p class="mb-0 text-muted small">{{ ack.message }}</p>
+              {% endif %}
+            </div>
+            {% endfor %}
+
+            <div class="collapse" id="more-acknowledgements">
+              {% for ack in acks offset:3 %}
+              <div class="acknowledgement-item mb-3 pb-3 border-bottom-dashed">
+                <h5 class="h6 mb-1">
+                  {% if ack.link %}
+                  <a href="{{ ack.link }}" target="_blank" rel="noopener" class="ack-link font-weight-bold">{{ ack.name
+                    }}</a>
+                  {% else %}
+                  <span class="font-weight-bold text-dark">{{ ack.name }}</span>
+                  {% endif %}
+                </h5>
+                {% if ack.message %}
+                <p class="mb-0 text-muted small">{{ ack.message }}</p>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="text-center mt-3">
+              <button class="btn toggle-acks-btn px-4 py-2" type="button" data-toggle="collapse"
+                data-target="#more-acknowledgements" aria-expanded="false" aria-controls="more-acknowledgements"
+                data-count="{{ acks.size }}">
+                Show All Acknowledgements ({{ acks.size }})
+              </button>
+            </div>
+          </div>
+          {% else %}
+          <div class="acknowledgements-list">
+            {% for ack in acks %}
+            <div class="acknowledgement-item {% unless forloop.last %}mb-3 pb-3 border-bottom-dashed{% endunless %}">
+              <h5 class="h6 mb-1">
+                {% if ack.link %}
+                <a href="{{ ack.link }}" target="_blank" rel="noopener" class="ack-link font-weight-bold">{{ ack.name
+                  }}</a>
+                {% else %}
+                <span class="font-weight-bold text-dark">{{ ack.name }}</span>
+                {% endif %}
+              </h5>
+              {% if ack.message %}
+              <p class="mb-0 text-muted small">{{ ack.message }}</p>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.toggle-acks-btn');
+    var collapseEl = document.getElementById('more-acknowledgements');
+    if (btn && collapseEl && typeof window.jQuery !== 'undefined') {
+      var count = btn.getAttribute('data-count');
+      window.jQuery(collapseEl).on('show.bs.collapse', function () {
+        btn.innerHTML = 'Show Less';
+      });
+      window.jQuery(collapseEl).on('hide.bs.collapse', function () {
+        btn.innerHTML = 'Show All Acknowledgements (' + count + ')';
+      });
+    }
+  });
+</script>
+{% endif %}

@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
 body {
+
   background-color: white;
 
   h1,
@@ -18,24 +21,44 @@ body {
 }
 
 .navbar {
+  font-family: $font-family-sans-serif !important;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 
   a,
   .nav-link,
   button {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus,
+  a:hover {
+    color: white !important;
+    text-decoration: none;
   }
 }
 
-.nav-item.active,
 .nav-item:hover {
-  background-color: #707782;
-  transition: all 0.3s linear;
+  background-color: #4b525d;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.nav-item.active {
+  background-color: $peerbots-blue !important;
+  
+  .nav-link {
+    color: white !important;
+    font-weight: 600;
+  }
 }
 
 .nav-link {
-  padding-left: 1em !important;
-  padding-right: 1em !important;
+  padding-left: 1.25em !important;
+  padding-right: 1.25em !important;
 }
 
 .jumbotron {
@@ -67,6 +90,45 @@ body {
 .content {
   margin-top: 1em;
   line-height: 2;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    color: #2b303a;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: 2.0rem;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 0.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  h5 {
+    font-size: 1.0rem;
+  }
+
+  h6 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6c757d;
+  }
 }
 
 .content img {
@@ -84,15 +146,85 @@ blockquote {
 }
 
 pre {
-  border-left: 7px solid $gray-light;
-  padding: 1em;
-  background-color: $gray-lighter;
-  line-height: 1.2;
+  border-left: 4px solid $peerbots-blue;
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  line-height: 1.5;
+  font-family: 'Fira Code', Monaco, Consolas, "Courier New", monospace !important;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 code {
-  background-color: $gray-lighter;
+  font-family: 'Fira Code', Monaco, Consolas, "Courier New", monospace !important;
+  background-color: #f8f9fa;
+  color: #d63384;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
 }
+
+pre code {
+  color: inherit;
+  padding: 0;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+/* Syntax Highlighting for Rouge (Code Blocks) */
+.highlight {
+  background-color: #f8f9fa;
+  color: #2b303a;
+
+  .c, .cm, .c1, .cp, .cs, .cd {
+    color: #7a8a99;
+    font-style: italic;
+  }
+  .err {
+    color: $peerbots-red;
+    background-color: $peerbots-light-red;
+  }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: darken($peerbots-blue, 10%);
+    font-weight: bold;
+  }
+  .o, .ow {
+    color: darken($peerbots-blue, 5%);
+    font-weight: 500;
+  }
+  .p {
+    color: #4a5056;
+  }
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    color: darken($peerbots-red, 15%);
+  }
+  .m, .mb, .mx, .mo, .mh, .mi, .il {
+    color: darken($peerbots-yellow, 20%);
+    font-weight: 500;
+  }
+  .n, .nv, .vc, .vg, .vi, .nn {
+    color: #2b303a;
+  }
+  .nb {
+    color: #c25800; // Deep orange for built-ins
+  }
+  .nf {
+    color: darken($peerbots-teal, 15%);
+    font-weight: 500;
+  }
+  .nc {
+    color: darken($peerbots-teal, 20%);
+    font-weight: bold;
+  }
+  .na {
+    color: #c25800;
+  }
+}
+
+
 
 section {
   margin: 3em 0;
@@ -444,4 +576,385 @@ footer {
 
 .transition-all {
   transition: all 0.2s ease-in-out;
+}
+
+// Acknowledgements Section
+.acknowledgements-section {
+  background: linear-gradient(180deg, transparent, rgba($peerbots-blue, 0.02));
+  border-top: 1px solid rgba($peerbots-blue, 0.08);
+  padding: 2.5rem 0;
+  
+  .acknowledgements-container {
+    background: white;
+    border: 1px solid rgba($peerbots-blue, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $peerbots-blue, $peerbots-teal);
+    }
+  }
+
+  .acknowledgements-title {
+    color: darken($peerbots-blue, 10%);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    
+    i {
+      color: $peerbots-red;
+      animation: heartbeat 1.5s infinite;
+    }
+  }
+
+  .acknowledgement-item {
+    transition: background-color 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    
+    &:hover {
+      background-color: rgba($peerbots-blue, 0.03);
+    }
+  }
+
+  .ack-link {
+    color: $peerbots-blue;
+    text-decoration: none;
+    border-bottom: 1px dotted $peerbots-blue;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: darken($peerbots-blue, 15%);
+      border-bottom: 1px solid darken($peerbots-blue, 15%);
+      text-decoration: none;
+    }
+  }
+  
+  .border-bottom-dashed {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+  }
+
+  .toggle-acks-btn {
+    border: 1px solid $peerbots-blue;
+    color: $peerbots-blue;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background: transparent;
+    transition: all 0.2s ease;
+    
+    &:hover, &:focus, &.active {
+      background-color: $peerbots-blue;
+      color: white;
+      box-shadow: 0 4px 10px rgba($peerbots-blue, 0.2);
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Custom elegant styling for Kramdown footnotes / references list */
+.footnotes {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  font-size: 0.88rem;
+  color: #666;
+
+  &::before {
+    content: "References";
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2b303a;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  ol {
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+    
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+      color: #555;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      p {
+        margin-bottom: 0;
+        display: inline;
+      }
+    }
+  }
+
+  .reversefootnote {
+    font-size: 0.75rem;
+    margin-left: 0.35rem;
+    color: #007bff; /* default link blue fallback if $peerbots-blue is scoped */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateX(-2px);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Custom styling for definitions list */
+.definitions-container {
+  overflow: hidden;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  
+  .definitions-header {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  .definition-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+
+  .definition-trigger {
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.015) !important;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .definition-term {
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .definition-icon {
+    transition: transform 0.25s ease;
+    color: #888;
+  }
+
+  .definition-trigger[aria-expanded="true"] {
+    background-color: rgba(0, 123, 255, 0.02) !important;
+    
+    .definition-icon {
+      transform: rotate(180deg);
+      color: #007bff;
+    }
+  }
+
+  .definition-content-wrapper {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  .definition-content {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-left: 3px solid #007bff;
+    margin: 0.25rem 1.5rem 1rem 1.5rem;
+    padding-left: 1rem !important;
+    
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Custom elegant styling for Interactive Textbox includes */
+.interactive-textbox-card {
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid $peerbots-blue !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .interactive-textarea {
+    &:focus {
+      border-color: $peerbots-blue !important;
+      box-shadow: 0 0 0 0.2rem rgba($peerbots-blue, 0.15) !important;
+      outline: none;
+    }
+  }
+
+  .btn-group {
+    .btn {
+      border-radius: 6px;
+      transition: all 0.15s ease-in-out;
+      
+      &.btn-outline-secondary {
+        color: $gray-darker;
+        border-color: #d8e7eb;
+        
+        &:hover {
+          background-color: rgba($peerbots-blue, 0.05);
+          color: $peerbots-blue;
+          border-color: $peerbots-blue;
+        }
+      }
+      
+      &.btn-outline-danger {
+        border-color: #d8e7eb;
+        color: $gray-dark;
+        
+        &:hover {
+          background-color: rgba($peerbots-red, 0.1);
+          color: darken($peerbots-red, 10%);
+          border-color: $peerbots-red;
+        }
+      }
+    }
+  }
+}
+
+/* Condensed view for facilitators */
+body.role-facilitator {
+  .interactive-textbox-card {
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    box-shadow: none !important;
+    border-left: 4px solid $peerbots-teal !important; /* switch to teal accent in facilitator mode */
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border-left-width: 4px !important;
+    background-color: #f8f9fa !important;
+    transform: none !important;
+
+    .card-body {
+      padding: 0.75rem 1.25rem !important;
+    }
+
+    /* Hide the textarea, button toolbar, counter section, status indication, and help text */
+    textarea,
+    .form-text,
+    .position-relative,
+    .d-flex.justify-content-between.align-items-center.mt-3,
+    .save-status-indicator {
+      display: none !important;
+    }
+
+    label {
+      margin-bottom: 0 !important;
+      font-size: 0.95rem !important;
+      font-weight: 500 !important;
+      display: inline-block !important;
+      
+      span {
+        color: $gray-dark;
+      }
+    }
+  }
+
+  .interactive-section {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    padding: 0.5rem 1rem !important;
+    background-color: #f8f9fa !important;
+    border-left: 3px solid $peerbots-teal !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+
+    p,
+    input,
+    .interactive-checkbox {
+      display: none !important;
+    }
+
+    span {
+      font-size: 0.95rem !important;
+      color: $gray-dark !important;
+      display: inline-block !important;
+    }
+  }
+
+  .facilitator-only-block {
+    display: block !important;
+  }
+}
+
+/* Default state (hidden for learners) */
+.facilitator-only-block {
+  display: none !important;
+}
+
+.facilitator-only-content {
+  color: #111111 !important; /* Force a highly legible, dark color for all nested elements */
+
+  p, li, ul, ol, span, strong, em, b, i {
+    color: #111111 !important;
+  }
+}
+
+/* Print Stylesheet Overrides */
+.print-only {
+  display: none;
+}
+
+@media print {
+  /* Hide standard page elements when printing */
+  nav,
+  .sidebar,
+  footer,
+  .pagination-section,
+  hr,
+  .no-print,
+  .content > *:not(#print-only-summary) {
+    display: none !important;
+  }
+
+  /* Reveal the print-only container */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Expand content to full paper width and remove margins */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .col-xl-6, 
+  .col-md-9, 
+  .container-fluid, 
+  .row, 
+  .col-lg-8, 
+  .offset-lg-2,
+  .content {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
 }

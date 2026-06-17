@@ -1,0 +1,28 @@
+    </div> <!-- Close definitions-list -->
+</div> <!-- Close definitions-container -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const containerId = '{{ page_def_container_id }}';
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const expandBtn = container.querySelector('.expand-all-btn');
+    const collapseBtn = container.querySelector('.collapse-all-btn');
+
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('show');
+        });
+    }
+
+    if (collapseBtn) {
+        collapseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('hide');
+        });
+    }
+});
+</script>
+

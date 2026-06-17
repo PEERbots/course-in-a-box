@@ -16,6 +16,10 @@
 
   {% if page.layout == 'course_landing' %}
   {% assign course_id = page.url | split: '/' | slice: 2 | first %}
+  {% elsif page.layout == 'module_landing' %}
+  {% assign path_parts = page.url | split: '/' %}
+  {% assign course_id = path_parts[2] %}
+  {% assign module_id = path_parts[3] %}
   {% elsif page.layout == 'course_page' %}
   {% assign course_id = page.categories[1] %}
   {% assign module_id = page.categories[2] %}
@@ -87,6 +91,14 @@
 </head>
 
 <body {% if page.itemtype %}itemscope itemtype="{{ page.itemtype }}" {% endif %} class="d-flex flex-column min-vh-100">
+  <script>
+    (function() {
+      const role = sessionStorage.getItem('user-role') || 'learner';
+      if (role === 'facilitator') {
+        document.body.classList.add('role-facilitator');
+      }
+    })();
+  </script>
 
   {% include navigation.html %}
 
@@ -115,6 +127,101 @@
   {% if site.ga_tracking_code or site.p2pu_ga_tracking_code %}
   {% include ga.html %}
   {% endif %}
+
+  <script>
+    // Global persistence for checkboxes and true-false questions
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Interactive Checkboxes
+      const checkboxes = document.querySelectorAll('.interactive-checkbox');
+      checkboxes.forEach(function(checkbox, idx) {
+        const parent = checkbox.parentElement;
+        if (!parent) return;
+        const span = parent.querySelector('span');
+        if (!span) return;
+        
+        const statement = span.textContent.trim();
+        const storageKey = window.location.pathname + '-check-' + statement;
+        
+        // Restore state
+        const savedState = localStorage.getItem(storageKey);
+        if (savedState === 'checked') {
+          checkbox.checked = true;
+        }
+        
+        // Track order and label
+        if (typeof window.textboxInitializationCounter === 'undefined') {
+          window.textboxInitializationCounter = 0;
+        }
+        window.textboxInitializationCounter++;
+        localStorage.setItem(storageKey + '-order', window.textboxInitializationCounter.toString());
+        localStorage.setItem(storageKey + '-label', statement);
+        
+        // Save state on change
+        checkbox.addEventListener('change', function() {
+          if (checkbox.checked) {
+            localStorage.setItem(storageKey, 'checked');
+          } else {
+            localStorage.removeItem(storageKey);
+          }
+          
+          // Recalculate progress if function is defined
+          if (typeof recalculateTaskValues === 'function') {
+            recalculateTaskValues();
+          }
+        });
+      });
+      
+      // 2. True/False Questions
+      const tfContainers = document.querySelectorAll('[id$="-tf-buttons"]');
+      tfContainers.forEach(function(container) {
+        const containerId = container.id;
+        const id = containerId.replace('-tf-buttons', '');
+        
+        const trueBtn = document.getElementById(id + '-true-button');
+        const falseBtn = document.getElementById(id + '-false-button');
+        const trueResponse = document.getElementById(id + '-true-response');
+        const falseResponse = document.getElementById(id + '-false-response');
+        if (!trueBtn || !falseBtn) return;
+        
+        const parent = container.parentElement;
+        const span = parent ? parent.querySelector('span') : null;
+        const statement = span ? span.textContent.trim() : 'True/False Question';
+        
+        const storageKey = window.location.pathname + '-tf-' + id;
+        
+        // Restore state
+        const savedChoice = localStorage.getItem(storageKey);
+        if (savedChoice === 'true') {
+          container.classList.add('d-none');
+          if (trueResponse) trueResponse.classList.remove('d-none');
+        } else if (savedChoice === 'false') {
+          container.classList.add('d-none');
+          if (falseResponse) falseResponse.classList.remove('d-none');
+        }
+        
+        // Track order and label
+        if (typeof window.textboxInitializationCounter === 'undefined') {
+          window.textboxInitializationCounter = 0;
+        }
+        window.textboxInitializationCounter++;
+        localStorage.setItem(storageKey + '-order', window.textboxInitializationCounter.toString());
+        localStorage.setItem(storageKey + '-label', statement);
+        
+        // Save state on click
+        trueBtn.addEventListener('click', function() {
+          localStorage.setItem(storageKey, 'true');
+        });
+        falseBtn.addEventListener('click', function() {
+          localStorage.setItem(storageKey, 'false');
+        });
+      });
+      
+      // 3. Trigger progress calculation if progress component exists on page load
+      if (typeof recalculateTaskValues === 'function') {
+        recalculateTaskValues();
+      }
+    });
+  </script>
 
 </body>
 
