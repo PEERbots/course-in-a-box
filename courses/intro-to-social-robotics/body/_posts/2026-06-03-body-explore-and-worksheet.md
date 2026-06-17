@@ -16,9 +16,9 @@ Brainstorm some ideas for what your robot's purpose or problem to solve is, then
 ## Build
 
 {% include facilitator_only.html text="
-- Explain the materials that you have to students and walk them through how the materials can be used or combined together.
+- Explain the materials that you have to learners and walk them through how the materials can be used or combined together.
 - Create space for their creative or non-traditional uses of these materials (as long as they are safe).
-- Have students build their robot body with the available materials.
+- Have learners build their robot body with the available materials.
 " %}
 
 Next, start working on your physical build, try to keep it consistent with your design. Use any materials you have available to you and consider designing the following:

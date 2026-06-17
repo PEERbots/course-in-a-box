@@ -25,7 +25,7 @@ Your robot presentation should include the following core components:
 - Conduct a live demonstration of the robot interacting with a user, using either the dashboard buttons or the programmed hardware buttons.
 
 ### 5. Peer Q&A
-- Allot time at the end for other students and facilitators to ask questions about your build, code, and design process.
+- Allot time at the end for other learners and facilitators to ask questions about your build, code, and design process.
 
 ---
 

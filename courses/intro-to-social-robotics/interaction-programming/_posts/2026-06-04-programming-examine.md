@@ -12,8 +12,8 @@ Reflect on your hardware button programming experience.
 
 ## Peer Check-In
 
-Demonstrate your button setup to other students.
+Demonstrate your button setup to other learners.
 
-{% include interactive_textbox.html id="programming-peer-feedback" label="What did other students think of your physical button controls? Did they suggest new behaviors?" placeholder="Record comments or suggestions from peers..." %}
+{% include interactive_textbox.html id="programming-peer-feedback" label="What did other learners think of your physical button controls? Did they suggest new behaviors?" placeholder="Record comments or suggestions from peers..." %}
 
-{% include interactive_textbox.html id="programming-peer-ideas" label="What interesting button configurations did you see other students build?" placeholder="Record observations on others' hardware set..." %}
+{% include interactive_textbox.html id="programming-peer-ideas" label="What interesting button configurations did you see other learners build?" placeholder="Record observations on others' hardware set..." %}

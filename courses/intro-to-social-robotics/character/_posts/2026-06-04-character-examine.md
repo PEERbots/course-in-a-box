@@ -16,4 +16,4 @@ Share your character design with peers and collect feedback. Think about how bel
 
 {% include interactive_textbox.html id="character-peer-feedback" label="What feedback did you receive from others about your character?" placeholder="Record feedback received..." %}
 
-{% include interactive_textbox.html id="character-peer-review" label="What did you learn from reviewing other students' characters?" placeholder="Record observations on others' characters..." %}
+{% include interactive_textbox.html id="character-peer-review" label="What did you learn from reviewing other learners' characters?" placeholder="Record observations on others' characters..." %}

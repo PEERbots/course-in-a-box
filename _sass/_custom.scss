@@ -70,6 +70,45 @@ body {
 .content {
   margin-top: 1em;
   line-height: 2;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    color: #2b303a;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-size: 2.0rem;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 0.4rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  h5 {
+    font-size: 1.0rem;
+  }
+
+  h6 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6c757d;
+  }
 }
 
 .content img {

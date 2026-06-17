@@ -13,8 +13,8 @@ Translate your storyboard cells into distinct buttons. Decide which lines the ro
 ## Build
 
 {% include facilitator_only.html text="
-- Ensure students can connect their control devices to the face devices.
-- Walk students through creating custom buttons using Bulk Author or Table View.
+- Ensure learners can connect their control devices to the face devices.
+- Walk learners through creating custom buttons using Bulk Author or Table View.
 - Emphasize that buttons should be ordered and color-coded to make live control easy during a test.
 " %}
 

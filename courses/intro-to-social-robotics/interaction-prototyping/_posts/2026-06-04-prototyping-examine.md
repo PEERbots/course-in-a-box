@@ -14,6 +14,6 @@ Reflect on your prototyping experience.
 
 Conduct test runs with other groups and share your findings.
 
-{% include interactive_textbox.html id="prototype-feedback" label="What did other students say about interacting with your robot? Did they find the conversation natural?" placeholder="Record comments or critiques from peers..." %}
+{% include interactive_textbox.html id="prototype-feedback" label="What did other learners say about interacting with your robot? Did they find the conversation natural?" placeholder="Record comments or critiques from peers..." %}
 
 {% include interactive_textbox.html id="prototype-peer-learnings" label="What did you learn from watching other groups control their robots?" placeholder="Record details about how other groups laid out their buttons or managed conversation flow..." %}
