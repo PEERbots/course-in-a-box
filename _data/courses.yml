@@ -44,6 +44,9 @@ courses:
     - id: interaction-programming
       title: Interaction Programming
       description: Program your social robot interaction with the Peerbots API.
+    - id: presentation
+      title: Robot Presentation
+      description: Present your social robot design, backstory, and interaction to your peers.
 - id: sewing-and-social-robots
   title: Sewing and Social Robots
   status: coming_soon

@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
 body {
+
   background-color: white;
 
   h1,
@@ -84,15 +87,34 @@ blockquote {
 }
 
 pre {
-  border-left: 7px solid $gray-light;
-  padding: 1em;
-  background-color: $gray-lighter;
-  line-height: 1.2;
+  border-left: 4px solid $peerbots-blue;
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  line-height: 1.5;
+  font-family: 'Fira Code', Monaco, Consolas, "Courier New", monospace !important;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 code {
-  background-color: $gray-lighter;
+  font-family: 'Fira Code', Monaco, Consolas, "Courier New", monospace !important;
+  background-color: #f8f9fa;
+  color: #d63384;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
 }
+
+pre code {
+  color: inherit;
+  padding: 0;
+  background-color: transparent;
+  font-size: inherit;
+}
+
 
 section {
   margin: 3em 0;
