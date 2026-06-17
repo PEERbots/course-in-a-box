@@ -1,7 +1,7 @@
 ---
 title: "Robot Body Design Summary"
 ---
-{% include module_summary.html %}
+{% include module_summary.html custom_title="Robot Body Design"%}
 
 ## Survey
 

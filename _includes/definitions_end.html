@@ -2,56 +2,27 @@
 </div> <!-- Close definitions-container -->
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
     const containerId = '{{ page_def_container_id }}';
-    
-    const initDefinitions = function() {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        
-        const items = container.querySelectorAll('.definition-item');
-        const expandAllBtn = container.querySelector('.expand-all-btn');
-        const collapseAllBtn = container.querySelector('.collapse-all-btn');
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-        items.forEach(function(item) {
-            const trigger = item.querySelector('.definition-trigger');
-            const content = item.querySelector('.definition-content-wrapper');
+    const expandBtn = container.querySelector('.expand-all-btn');
+    const collapseBtn = container.querySelector('.collapse-all-btn');
 
-            trigger.addEventListener('click', function() {
-                const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-                if (isExpanded) {
-                    trigger.setAttribute('aria-expanded', 'false');
-                    content.style.max-height = '0';
-                } else {
-                    trigger.setAttribute('aria-expanded', 'true');
-                    content.style.max-height = content.scrollHeight + 'px';
-                }
-            });
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('show');
         });
-
-        expandAllBtn.addEventListener('click', function() {
-            items.forEach(function(item) {
-                const trigger = item.querySelector('.definition-trigger');
-                const content = item.querySelector('.definition-content-wrapper');
-                trigger.setAttribute('aria-expanded', 'true');
-                content.style.max-height = content.scrollHeight + 'px';
-            });
-        });
-
-        collapseAllBtn.addEventListener('click', function() {
-            items.forEach(function(item) {
-                const trigger = item.querySelector('.definition-trigger');
-                const content = item.querySelector('.definition-content-wrapper');
-                trigger.setAttribute('aria-expanded', 'false');
-                content.style.max-height = '0';
-            });
-        });
-    };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initDefinitions);
-    } else {
-        initDefinitions();
     }
-})();
+
+    if (collapseBtn) {
+        collapseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#' + containerId + ' .definition-content-wrapper').collapse('hide');
+        });
+    }
+});
 </script>
+
