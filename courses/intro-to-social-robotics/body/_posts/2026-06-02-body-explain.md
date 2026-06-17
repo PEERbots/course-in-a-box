@@ -45,21 +45,21 @@ Relevant Videos:
 
 **Robots**
 - **Arms**
-  - [myArm 300  Pi | Smallest 7-Axis Desktop Robotic Arm with Arm-Like Dexterity](https://www.youtube.com/watch?v=mVBBaVXF_M0) 
+  - [myArm 300 Pi - Smallest 7-Axis Desktop Robotic Arm with Arm-Like Dexterity](https://www.youtube.com/watch?v=mVBBaVXF_M0) 
   - Industrial Robot Arm: [https://www.youtube.com/watch?v=ag16maQkNCc](https://www.youtube.com/watch?v=ag16maQkNCc) 
   - Vacuum + Arm: [Roborock’s Saros Z70 Comes With a Foldable Robotic Arm](https://www.youtube.com/watch?v=X7wwVwW-SCY) 
 - **Animal-like (Zoomorphic)**
-  - [aibo | Sony’s Robot Companion Puppy](https://www.youtube.com/watch?v=3iMsvjO0GVY)
+  - [aibo - Sony’s Robot Companion Puppy](https://www.youtube.com/watch?v=3iMsvjO0GVY)
   - [Spot Launch](https://www.youtube.com/watch?v=wlkCQXHEgjA)  
 - **Social Robots**
   - [Misty's unique personality and expressions](https://www.youtube.com/watch?v=9yalXhLcHiY) 
   - [NAO Robot V6 now available from RobotLAB](https://www.youtube.com/watch?v=HKFHUrx23ts) 
   - [Pepper, the new robot by Aldebaran #PepperRobot](https://www.youtube.com/watch?v=osD6O4LAcpo)
 - **Humanoids**
-  - [All New Atlas | Boston Dynamics](https://www.youtube.com/watch?v=29ECwExc-_M) 
+  - [All New Atlas - Boston Dynamics](https://www.youtube.com/watch?v=29ECwExc-_M) 
   - [Immersive Character Robot - Furhat Robotics](https://www.youtube.com/watch?v=cPw9wFP5ubw) 
-  - [Watch Sophia the robot walk for the first time](https://www.youtube.com/watch?v=lCFQkB-KLsE) - Potentially discuss the uncanny valley here  
-  - Uncanny Valley: [What Is The Uncanny Valley? | Mashable Explains](https://www.youtube.com/watch?v=aYuBDkto2Vk) 
+  - [Watch Sophia the robot walk for the first time](https://www.youtube.com/watch?v=lCFQkB-KLsE) 
+  - Uncanny Valley: [What Is The Uncanny Valley? - Mashable Explains](https://www.youtube.com/watch?v=aYuBDkto2Vk) 
 
 Key Resources:
 - [The ABOT Database](https://www.abotdatabase.info/) 
